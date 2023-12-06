@@ -16,6 +16,18 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      height: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+      },
+      weight: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+      },
+      lifespan: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
     {
       timestamps: false,
