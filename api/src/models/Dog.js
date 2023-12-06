@@ -11,6 +11,7 @@ module.exports = (sequelize) => {
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
         unique: true,
+        allowNull: false,
       },
       name: {
         type: DataTypes.STRING,
@@ -25,8 +26,12 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       lifespan: {
+        // max 20
         type: DataTypes.INTEGER,
         allowNull: false,
+        validate: {
+          len: [2, 25],
+        },
       },
     },
     {
