@@ -1,3 +1,5 @@
+const {getDogs, getDogsRaza, getDogsName, postDogs} = require('../controllers/dogsController')
+
 const dogsHandler = {};
 
 dogsHandler.getDogsHandler = (req, res) => {

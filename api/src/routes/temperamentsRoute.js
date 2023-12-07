@@ -1,12 +1,8 @@
 const { Router } = require("express");
 const temperamentsRoute = Router();
+const temperamentsHandler = require("../handlers/temperamentsHandler");
+const { getTemperamentsHandler } = temperamentsHandler;
 
-temperamentsRoute.get('/',(req,res)=>{
-  try {
-    res.status(200).send('get temp')
-  } catch (error) {
-    res.status(404).json({error: error.message})
-  }
-})
+temperamentsRoute.get("/", getTemperamentsHandler);
 
 module.exports = temperamentsRoute;
