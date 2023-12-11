@@ -4,8 +4,9 @@ const dogsHandler = {};
 
 dogsHandler.getDogsHandler = (req, res) => {
   try {
-
-    res.status(200).send("get 1 dog");
+    const {data} = req.params
+    const response = getDogs(data)
+    res.status(200).JSON(response);
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
