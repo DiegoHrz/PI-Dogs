@@ -1,12 +1,19 @@
-const {getDogs, getDogsRaza, getDogsName, postDogs} = require('../controllers/dogsController')
+const {
+  getDogs,
+  getDogsRaza,
+  getDogsName,
+  postDogs,
+} = require("../controllers/dogsController");
 
 const dogsHandler = {};
 
-dogsHandler.getDogsHandler = (req, res) => {
+const axios = require("axios");
+
+dogsHandler.getDogsHandler = async (req, res) => {
   try {
-    const {data} = req.params
-    const response = getDogs(data)
-    res.status(200).JSON(response);
+    const response = await getDogs()
+    console.log(x);
+    res.status(200).send("exito");
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
@@ -14,7 +21,6 @@ dogsHandler.getDogsHandler = (req, res) => {
 
 dogsHandler.getDogsRaza = (req, res) => {
   try {
-
     res.status(200).send("get 2 dogos");
   } catch (error) {
     res.status(404).json({ error: error.message });
@@ -23,7 +29,6 @@ dogsHandler.getDogsRaza = (req, res) => {
 
 dogsHandler.getDogsName = (req, res) => {
   try {
-
     res.status(200).send("get 3");
   } catch (error) {
     res.status(404).json({ error: error.message });
@@ -32,7 +37,6 @@ dogsHandler.getDogsName = (req, res) => {
 
 dogsHandler.postDogs = (req, res) => {
   try {
-    
     res.status(200).send("post");
   } catch (error) {
     res.status(400).json({ error: error.message });
