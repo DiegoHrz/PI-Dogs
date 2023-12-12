@@ -13,6 +13,10 @@ module.exports = (sequelize) => {
         unique: true,
         allowNull: false,
       },
+      imagen_url:{
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,

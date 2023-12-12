@@ -1,25 +1,24 @@
 const {
-  getDogs,
-  getDogsRaza,
+  getAllBreeds,
+  getBreedId,
   getDogsName,
-  postDogs,
+  createDogs,
 } = require("../controllers/dogsController");
 
 const dogsHandler = {};
 
 const axios = require("axios");
 
-dogsHandler.getDogsHandler = async (req, res) => {
+dogsHandler.getAllBreedsHandler = async (req, res) => {
   try {
-    const response = await getDogs()
-    console.log(x);
-    res.status(200).send("exito");
+    const respuesta = await getAllBreeds()
+    res.status(200).json(respuesta);
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
 };
 
-dogsHandler.getDogsRaza = (req, res) => {
+dogsHandler.getBreedIdHandler= (req, res) => {
   try {
     res.status(200).send("get 2 dogos");
   } catch (error) {
@@ -27,7 +26,7 @@ dogsHandler.getDogsRaza = (req, res) => {
   }
 };
 
-dogsHandler.getDogsName = (req, res) => {
+dogsHandler.getDogsNameHandler = (req, res) => {
   try {
     res.status(200).send("get 3");
   } catch (error) {
@@ -35,7 +34,7 @@ dogsHandler.getDogsName = (req, res) => {
   }
 };
 
-dogsHandler.postDogs = (req, res) => {
+dogsHandler.createDogsHandler = (req, res) => {
   try {
     res.status(200).send("post");
   } catch (error) {
