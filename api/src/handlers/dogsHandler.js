@@ -18,9 +18,12 @@ dogsHandler.getAllBreedsHandler = async (req, res) => {
   }
 };
 
-dogsHandler.getBreedIdHandler= (req, res) => {
+dogsHandler.getBreedIdHandler= async(req, res) => {
   try {
-    res.status(200).send("get 2 dogos");
+    const {id} = req.params
+    const response = await getBreedId(id)
+    console.log(response)
+    res.status(200).json(response);
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
