@@ -6,8 +6,8 @@ const { API_KEY, API_URL } = process.env;
 //const URL = `${apiUrl}/${id}?api_key=${apiKey}`
 
 //get dogs
-const getAllBreeds = async () => {
-
+// and get dogs name (breed)
+const getAllBreeds = async (name) => {
   // get dogs breed in the db
   const allBreedsDb = async () => {
     const breedsDb = await Dog.findAll();
@@ -28,9 +28,14 @@ const getAllBreeds = async () => {
     return allBreedsApiMap;
   };
 
-  const breedsDb = await allBreedsDb()
-  const breedsApi = await allBreedsApi()
+  const breedsDb = await allBreedsDb();
+  const breedsApi = await allBreedsApi();
   const allBreeds = [...breedsDb, ...breedsApi];
+
+  if (name) {
+    const breedsFound = allBreeds.filter((dog) => dog.name === name);
+    return breedsFound;
+  }
   return allBreeds;
 };
 
@@ -52,7 +57,6 @@ const getBreedId = async (id) => {
 };
 
 //get dogs name
-const getDogsName = async () => {};
 
 //post dogs
 const createDogs = async (
@@ -72,4 +76,4 @@ const createDogs = async (
   return newDog;
 };
 
-module.exports = { getAllBreeds, getBreedId, getDogsName, createDogs };
+module.exports = { getAllBreeds, getBreedId, createDogs };
