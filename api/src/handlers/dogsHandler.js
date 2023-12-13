@@ -29,7 +29,7 @@ dogsHandler.getBreedIdHandler = async (req, res) => {
 
 dogsHandler.getDogsNameHandler = async (req, res) => {
   try {
-
+    const {name} = req.query
     const respuesta = await getAllBreeds(name);
     res.status(200).json(respuesta);
   } catch (error) {
