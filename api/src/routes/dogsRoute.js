@@ -5,11 +5,11 @@ const dogsHandler = require('../handlers/dogsHandler')
 const {getAllBreedsHandler, getBreedIdHandler, getDogsNameHandler, createDogsHandler} = dogsHandler
 
 
+dogsRoute.get("/", getDogsNameHandler );
+
 dogsRoute.get("/", getAllBreedsHandler);
 
 dogsRoute.get("/:id", getBreedIdHandler);
-
-dogsRoute.get("/name", getDogsNameHandler );
 
 dogsRoute.post("/", createDogsHandler);
 
