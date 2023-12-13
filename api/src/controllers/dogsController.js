@@ -5,25 +5,40 @@ const { API_KEY, API_URL } = process.env;
 
 //const URL = `${apiUrl}/${id}?api_key=${apiKey}`
 
-//get dos
+//get dogs
 const getAllBreeds = async () => {
-  const { data } = await axios.get(`${API_URL}`, {
-    params: {
-      "x-api-key": API_KEY,
-    },
-  });
 
-  const allBreedsApi = data.map((dog) => {
-    return { name: dog.name };
-  });
-  return allBreedsApi;
+  // get dogs breed in the db
+  const allBreedsDb = async () => {
+    const breedsDb = await Dog.findAll();
+    return breedsDb;
+  };
+
+  // get dogs breed in the api
+  const allBreedsApi = async () => {
+    const { data } = await axios.get(`${API_URL}`, {
+      params: {
+        "x-api-key": API_KEY,
+      },
+    });
+    const allBreedsApiMap = data.map((dog) => {
+      return { name: dog.name };
+    });
+
+    return allBreedsApiMap;
+  };
+
+  const breedsDb = await allBreedsDb()
+  const breedsApi = await allBreedsApi()
+  const allBreeds = [...breedsDb, ...breedsApi];
+  return allBreeds;
 };
 
 //get dogs idRaza
 const getBreedId = async (id) => {
   if (isNaN(id)) {
-    const foundBreed = await Dog.findById(id);
-    return findBreed;
+    const foundBreed = await Dog.findByPk(id);
+    return foundBreed;
   }
 
   const { data } = await axios.get(`${API_URL}`, {
@@ -33,21 +48,28 @@ const getBreedId = async (id) => {
   });
 
   const foundBreed = data.find((dog) => dog.id === +id);
-  return foundBreed
+  return foundBreed;
 };
 
 //get dogs name
 const getDogsName = async () => {};
 
 //post dogs
-const createDogs = async (image_url, name, height, weight, lifespan) => {
+const createDogs = async (
+  reference_image_id,
+  name,
+  height,
+  weight,
+  lifespan
+) => {
   const newDog = await Dog.create({
-    image_url,
+    reference_image_id,
     name,
     height,
     weight,
     lifespan,
   });
+  return newDog;
 };
 
 module.exports = { getAllBreeds, getBreedId, getDogsName, createDogs };

@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
         unique: true,
         allowNull: false,
       },
-      image_url:{
+      reference_image_id:{
         type: DataTypes.STRING,
         allowNull: false,
       },

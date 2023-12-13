@@ -38,9 +38,10 @@ dogsHandler.getDogsNameHandler = (req, res) => {
 
 dogsHandler.createDogsHandler = (req, res) => {
   try {
-    const {imagen_Url,name, height, weight, lifespan} = req.body
-    const respuesta = createDogs(image_Url, name, height, weight, lifespan)
-    res.status(200).send("post");
+    const {reference_image_id,name, height, weight, lifespan} = req.body
+    const respuesta = createDogs(reference_image_id, name, height, weight, lifespan)
+    //es un 201 porque a parte de que todo este bien se creo algo
+    res.status(201).json(respuesta);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

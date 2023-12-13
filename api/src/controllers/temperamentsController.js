@@ -5,6 +5,7 @@ const axios = require("axios");
 const { Temperaments } = require("../db");
 
 const getTemperaments = async () => {
+
     const temperamentsDB = await Temperaments.findAll();
   
     if (!temperamentsDB.length) {
@@ -40,5 +41,5 @@ const getTemperaments = async () => {
     return temperamentsDB.map((tem) => tem.name);
   };
   
-  module.exports = getTemperaments;
+  module.exports = {getTemperaments};
   
