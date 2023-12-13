@@ -40,9 +40,9 @@ const getBreedId = async (id) => {
 const getDogsName = async () => {};
 
 //post dogs
-const createDogs = async (imagen_url, name, height, weight, lifespan) => {
+const createDogs = async (image_url, name, height, weight, lifespan) => {
   const newDog = await Dog.create({
-    imagen_url,
+    image_url,
     name,
     height,
     weight,
