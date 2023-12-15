@@ -8,6 +8,11 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
+          <Route path={"/"} component={} ></Route>
+          <Route></Route>
+          <Route></Route>
+          <Route></Route>
+          <Route></Route>
           <Route></Route>
         </Switch>
       </BrowserRouter>
