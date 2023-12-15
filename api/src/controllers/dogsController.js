@@ -34,7 +34,11 @@ const getAllBreeds = async (name) => {
   const allBreeds = [...breedsDb, ...breedsApi];
 
   if (name) {
-    const breedsFound = allBreeds.filter((dog) => dog.name === name);
+    const breedsFound = allBreeds.filter((dog) => dog.name.toLowerCase() === name.toLowerCase());
+
+    if (!breedsFound.length){
+      throw new Error(`No se encontraron razas con el name:${name}`);
+    }
     return breedsFound;
   }
   return allBreeds;
@@ -68,5 +72,10 @@ const createDogs = async (reference_image_id, name, height, weight, lifespan, te
   })
   return newDog;
 };
+
+//al usar thunder client 
+//1ro llamas 
+
+
 
 module.exports = { getAllBreeds, getBreedId, createDogs };
