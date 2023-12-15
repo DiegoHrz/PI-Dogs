@@ -1,12 +1,27 @@
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+//in version 6 : import {BrowserRouter, Route, Routes}
+
 
 function App() {
   return (
     <div className="App">
-      <h1>Henry Dogs</h1>
-      <p>Hola a todos amiguitos este es mi proyecto ojala les guste</p>
+      <BrowserRouter>
+        <Switch>
+          <Route></Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
 
 export default App;
+
+/* in version 6 of react-router-dom:
+      <BrowserRouter>
+        <Switch>
+          <Route path={'/'} element={<Landing/>} ></Route>
+          <Route></Route>
+        </Switch>
+      </BrowserRouter>
+*/

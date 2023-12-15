@@ -1,4 +1,5 @@
 const { Dog } = require("../db");
+const {Temperaments} = require ('../db')
 const axios = require("axios");
 require("dotenv").config();
 const { API_KEY, API_URL } = process.env;
@@ -59,20 +60,12 @@ const getBreedId = async (id) => {
 //get dogs name
 
 //post dogs
-const createDogs = async (
-  reference_image_id,
-  name,
-  height,
-  weight,
-  lifespan
-) => {
-  const newDog = await Dog.create({
-    reference_image_id,
-    name,
-    height,
-    weight,
-    lifespan,
-  });
+const createDogs = async (reference_image_id, name, height, weight, lifespan, temperaments) => {
+  const newDog = await Dog.create({reference_image_id,name,height,weight,lifespan});
+  temperaments.forEach(async(tem)=>{
+    let temperamentsDb = await Temperaments.findAll({where:{ name: tem}})
+    await newDog.addTemperaments(temperamentsDb);
+  })
   return newDog;
 };
 

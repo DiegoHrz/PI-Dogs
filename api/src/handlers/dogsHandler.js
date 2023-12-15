@@ -37,15 +37,16 @@ dogsHandler.getDogsNameHandler = async (req, res) => {
   }
 };
 
-dogsHandler.createDogsHandler = (req, res) => {
+dogsHandler.createDogsHandler = async (req, res) => {
   try {
-    const { reference_image_id, name, height, weight, lifespan } = req.body;
-    const respuesta = createDogs(
+    const { reference_image_id, name, height, weight, lifespan,temperaments } = req.body;
+    const respuesta = await createDogs(
       reference_image_id,
       name,
       height,
       weight,
-      lifespan
+      lifespan,
+      temperaments
     );
     //es un 201 porque a parte de que todo este bien se creo algo
     res.status(201).json(respuesta);
