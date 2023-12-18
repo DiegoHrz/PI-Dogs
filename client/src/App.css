@@ -1,10 +1,34 @@
 .App {
   text-align: center;
+  width: 100%;
+  height: 100vh;
+  /* background-image: url('./icons/omfgdogs.gif'); */
+  background-color: aqua;
+  font-size: larger;
+  font-weight: 600;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+audio::-webkit-media-controls-timeline,
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+  display: none !important;
+}
+
+.audio {
+  width: 25%;
+  border: 0;
+ transform: rotate(90deg); 
+ transform-origin: left bottom;
+ display: flex;
+ align-items: center;
+ justify-content: flex-end; /* Alinea al final del contenedor (lado derecho) */
+ position: fixed; /* Fija el contenedor en la pantalla */
+ right: 0; 
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -26,6 +50,11 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.audio{
+  border:2px solid #282c34;
+  display: flex;
 }
 
 @keyframes App-logo-spin {

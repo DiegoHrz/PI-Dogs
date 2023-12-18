@@ -1,0 +1,16 @@
+.form-container form{
+    
+    background-color: beige;
+    width: 20rem;
+    display: flex;
+    flex-direction: column; 
+    border: 1px solid blue;
+}
+
+
+.form-container{
+    display: flex;
+    justify-content: center;
+    border: 1px solid red;
+} 
+
