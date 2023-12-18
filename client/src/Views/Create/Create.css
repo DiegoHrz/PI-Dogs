@@ -4,13 +4,26 @@
     width: 20rem;
     display: flex;
     flex-direction: column; 
-    border: 1px solid blue;
+    border: 2px solid blue;
 }
 
 
 .form-container{
     display: flex;
     justify-content: center;
-    border: 1px solid red;
-} 
+    border: 2px solid red;
 
+} 
+.form-container p{
+    display: flex;
+    justify-content: left;
+    margin-right: 0;
+}
+.form-container input{
+    display: inline;
+}
+p {
+    display: inline;
+    margin: 0
+
+}

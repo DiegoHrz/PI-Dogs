@@ -12,20 +12,34 @@ const Create = () => {
         min_weight:'',
         max_weight:'',
         lifespan: '',
-        temperamentos: '',
+        temperamentos: [],
         raza: '',
     })
+
+    const [errors, setErrors] = useState({
+        
+    })
+
+
 
     //se encarga de modificar el estado actual
     const handleChange = (event) =>{
         //recibe un evento que contenga la info del input que estamos modificando y cual es la info q debo modificar
+
+        if (event.target.name === 'temperamentos'){
+            setState({
+                ...state,
+                temperamentos: [...state.temperamentos, event.target.value]
+            })
+        }
+        else{
         setState({
             ...state,
             [event.target.name]: event.target.value
-        })
+        })}
 
         //al setState se le pasa el nuevo objeto que va a ser el nuevo estado
-        //este nuevo estado recibira una copia del estado anterior (...state) para que no el nuevo objeto que creo no pise el estado anterior 
+        //este nuevo estado recibira una copia del estado anterior (...state) para que el nuevo objeto que creo no pise el estado anterior 
         //Además le concateno la posicion del event.target.name y le doy el valor e.target.value
     }
 
@@ -38,20 +52,27 @@ const Create = () => {
         <input onChange={handleChange} type="text" name="nombre" id="" />
 
         <label htmlFor="">Altura:</label>
-        <input onChange={handleChange} type="text" name="altura" id="" />
+        <p>Min:</p>
+        <input onChange={handleChange} type="text" name="min_height" id="" />
+        <p >Max:</p>
+        <input onChange={handleChange} type="text" name="max_height" id="" />
+
 
         <label htmlFor="">Peso:</label>
-        <input onChange={handleChange} type="text" name="peso" id="" />
+        <p>Min:</p>
+        <input onChange={handleChange} type="text" name="min_weight" id="" />
+        <p >Max:</p>
+        <input onChange={handleChange} type="text" name="max_weight" id="" />
 
         <label htmlFor="">Años de vida:</label>
-        <input onChange={handleChange} type="text" name="años_de_vida" id="" />
+        <input onChange={handleChange} type="text" name="lifespan" id="" />
 
         <label htmlFor="">Temperamentos</label>
-        <select name="temperamentos" id="">
-          <option value="">Stubborn</option>
-          <option value="">Curious</option>
-          <option value="">Playful</option>
-          <option value="">Adventurous</option>
+        <select name="temperamentos" onChange={handleChange} id="">
+          <option value="Stubborn">Stubborn</option>
+          <option value="Curious">Curious</option>
+          <option value="Playful">Playful</option>
+          <option value="Adventurous">Adventurous</option>
         </select>
 
         <label htmlFor="">Raza:</label>
