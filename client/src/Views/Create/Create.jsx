@@ -19,7 +19,7 @@ const Create = () => {
     name: "",
     min_height: "",
     max_height: "",
-    min_wheight: "",
+    min_weight: "",
     max_weight: "",
     lifespan: "",
     temperaments: "",
@@ -45,7 +45,7 @@ const Create = () => {
         break;
 
       case "max_height":
-        if (state.min_height === "")
+        if (state.max_height === "")
           setErrors({ ...errors, max_height: "campo requerido" });
         else if (state.max_height > 20)
           setErrors({ ...errors, max_height: "Max 20 metros" });
@@ -53,11 +53,11 @@ const Create = () => {
         break;
 
       case "min_weight":
-        if (state.min_wheight === "")
+        if (state.min_weight === "")
           setErrors({ ...errors, min_weight: "campo requerido" });
-        else if (state.min_height < 0.3)
-          setErrors({ ...errors, min_wheight: "Min 30 cm" });
-        else setErrors({ ...errors, min_height: "" });
+        else if (state.min_weight < 1)
+          setErrors({ ...errors, min_weight: "Min 1 kg" });
+        else setErrors({ ...errors, min_weight: "" });
         break;
 
       case "max_weight":
@@ -71,8 +71,8 @@ const Create = () => {
       case "lifespan":
         if (state.lifespan === "")
           setErrors({ ...errors, lifespan: "campo requerido" });
-        else if (state.min_height < 0.3)
-          setErrors({ ...errors, lifespan: "Min 30 cm" });
+        else if (state.lifespan < 1)
+          setErrors({ ...errors, lifespan: "Min 1 year" });
         else setErrors({ ...errors, lifespan: "" });
         break;
     }
@@ -124,26 +124,26 @@ const Create = () => {
       {console.log(state)}
       <form action="">
         <label htmlFor="">Nombre:</label>
-        {errors.name}
+        {errors.name && (<span className="errorSpan">{errors.name}</span>)}
         <input onChange={handleChange} type="text" name="name" id="" />
         <label htmlFor="">Altura:</label>
         <p>Min:</p>
-        {errors.min_height}
+        {errors.min_height && (<span className='errorSpan'>{errors.min_height}</span>)}
         <input onChange={handleChange} type="text" name="min_height" id="" />
         <p>Max:</p>
-        {errors.max_height}
+        {errors.max_height && (<span className="errorSpan">{errors.max_height}</span>)}
         <input onChange={handleChange} type="text" name="max_height" id="" />
 
         <label htmlFor="">Peso:</label>
         <p>Min:</p>
-        {errors.min_weight}
+        {errors.min_weight && (<span className="errorSpan">{errors.min_weight}</span>) }
         <input onChange={handleChange} type="text" name="min_weight" id="" />
         <p>Max:</p>
-        {errors.max_weight}
+        {errors.max_weight && (<span className="errorSpan">{errors.max_weight}</span>)}
         <input onChange={handleChange} type="text" name="max_weight" id="" />
 
         <label htmlFor="">Años de vida:</label>
-        {errors.lifespan}
+        {errors.lifespan && (<span className="errorSpan">{errors.lifespan}</span>)}
         <input onChange={handleChange} type="text" name="lifespan" id="" />
 
         <label htmlFor="">Temperamentos</label>

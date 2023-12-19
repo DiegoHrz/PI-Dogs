@@ -27,3 +27,8 @@ p {
     margin: 0
 
 }
+
+.errorSpan{
+    color: red;
+    font-size: 10px;
+}
