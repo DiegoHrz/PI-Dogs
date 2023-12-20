@@ -16,13 +16,13 @@ const Create = () => {
   });
 
   const [errors, setErrors] = useState({
-    name: "",
-    min_height: "",
-    max_height: "",
-    min_weight: "",
-    max_weight: "",
-    lifespan: "",
-    temperaments: "",
+    name: "*campo requerido*",
+    min_height: "*campo requerido*",
+    max_height: "*campo requerido*",
+    min_weight: "*campo requerido*",
+    max_weight: "*campo requerido*",
+    lifespan: "*campo requerido*",
+    temperaments: "*selección requerida*",
     raza: "",
   });
 
@@ -41,8 +41,8 @@ const Create = () => {
           setErrors({ ...errors, min_height: "*campo requerido*" });
         else if (isNaN(+state.min_height))
           setErrors({ ...errors, min_height: "*Tiene que ser numero*" });
-        else if (state.min_height < 0.3) 
-        setErrors({ ...errors, min_height: "*Min 0.3 metros*" });
+        else if (state.min_height < 0.3)
+          setErrors({ ...errors, min_height: "*Min 0.3 metros*" });
         else setErrors({ ...errors, min_height: "" });
         break;
 
@@ -71,7 +71,7 @@ const Create = () => {
           setErrors({ ...errors, max_weight: "*campo requerido*" });
         else if (isNaN(+state.max_weight))
           setErrors({ ...errors, max_weight: "*Tiene que ser numero*" });
-        else if (state.max_weight < 100)
+        else if (state.max_weight > 100)
           setErrors({ ...errors, max_weight: "*Max 100 kg*" });
         else setErrors({ ...errors, max_weight: "" });
         break;
@@ -85,6 +85,12 @@ const Create = () => {
           setErrors({ ...errors, lifespan: "*Min 1 year*" });
         else setErrors({ ...errors, lifespan: "" });
         break;
+
+      case "temperaments":
+        if (state.temperaments.length === 0) {
+          setErrors({ ...errors, temperaments: "*seleccion requerida*" });
+        }
+        else setErrors({...errors, temperaments: ""})
     }
   };
 
@@ -129,10 +135,18 @@ const Create = () => {
     //Además le concateno la posicion del event.target.name y le doy el valor e.target.value
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
+    <>
+    <div>
+        <h2>CREA TU PROPIA RAZA DE <span className="title">PERRO</span></h2>
+    </div>
     <div className="form-container">
       {console.log(state)}
-      <form action="">
+      <form action="" onSubmit={handleSubmit}>
         <label htmlFor="">Nombre:</label>
         {errors.name && <span className="errorSpan">{errors.name}</span>}
         <input onChange={handleChange} type="text" name="name" id="" />
@@ -167,7 +181,9 @@ const Create = () => {
         <input onChange={handleChange} type="text" name="lifespan" id="" />
 
         <label htmlFor="">Temperamentos</label>
+        {errors.temperaments &&(<span className="errorSpan">{errors.temperaments}</span>)}
         <select name="temperaments" onChange={handleChange} id="">
+          <option value=""></option>
           <option value="Stubborn">Stubborn</option>
           <option value="Curious">Curious</option>
           <option value="Playful">Playful</option>
@@ -180,6 +196,7 @@ const Create = () => {
         <input type="submit" disabled={desactivadora()} value="Enviar" />
       </form>
     </div>
+    </>
   );
 };
 

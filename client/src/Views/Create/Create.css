@@ -32,3 +32,8 @@ p {
     color: red;
     font-size: 10px;
 }
+
+.title{
+    font-size: 50px;
+    display: block;
+}
