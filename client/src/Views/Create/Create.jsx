@@ -30,49 +30,50 @@ const Create = () => {
     switch (names) {
       case "name":
         if (state.name === "")
-          setErrors({ ...errors, name: "campo requerido" });
+          setErrors({ ...errors, name: "*campo requerido*" });
         else if (state.name.length > 20)
-          setErrors({ ...errors, name: "Máximo 20 caracteres" });
+          setErrors({ ...errors, name: "*Máximo 20 caracteres*" });
         else setErrors({ ...errors, name: "" });
         break;
 
       case "min_height":
         if (state.min_height === "")
-          setErrors({ ...errors, min_height: "campo requerido" });
-        else if (state.min_height < 0.3)
-          setErrors({ ...errors, min_height: "Min 30 cm" });
-        else setErrors({ ...errors, min_height: "" });
+          setErrors({ ...errors, min_height: "*campo requerido*" });
+        else if (isNaN(+state.min_height))
+          setErrors({ ...errors, min_height: "*Tiene que ser numero*" });
+        else if(state.min_height) setErrors({...errors,})
+        else setErrors({ ...errors, min_height: "*Min 0.3 metros*" });
         break;
 
       case "max_height":
         if (state.max_height === "")
-          setErrors({ ...errors, max_height: "campo requerido" });
+          setErrors({ ...errors, max_height: "*campo requerido*" });
         else if (state.max_height > 20)
-          setErrors({ ...errors, max_height: "Max 20 metros" });
+          setErrors({ ...errors, max_height: "*Max 20 metros*" });
         else setErrors({ ...errors, max_height: "" });
         break;
 
       case "min_weight":
         if (state.min_weight === "")
-          setErrors({ ...errors, min_weight: "campo requerido" });
+          setErrors({ ...errors, min_weight: "*campo requerido*" });
         else if (state.min_weight < 1)
-          setErrors({ ...errors, min_weight: "Min 1 kg" });
+          setErrors({ ...errors, min_weight: "*Min 1 kg*" });
         else setErrors({ ...errors, min_weight: "" });
         break;
 
       case "max_weight":
         if (state.max_weight === "")
-          setErrors({ ...errors, max_weight: "campo requerido" });
+          setErrors({ ...errors, max_weight: "*campo requerido*" });
         else if (state.max_weight < 100)
-          setErrors({ ...errors, max_weight: "Max 100 kg" });
+          setErrors({ ...errors, max_weight: "*Max 100 kg*" });
         else setErrors({ ...errors, max_weight: "" });
         break;
 
       case "lifespan":
         if (state.lifespan === "")
-          setErrors({ ...errors, lifespan: "campo requerido" });
+          setErrors({ ...errors, lifespan: "*campo requerido*" });
         else if (state.lifespan < 1)
-          setErrors({ ...errors, lifespan: "Min 1 year" });
+          setErrors({ ...errors, lifespan: "*Min 1 year*" });
         else setErrors({ ...errors, lifespan: "" });
         break;
     }
