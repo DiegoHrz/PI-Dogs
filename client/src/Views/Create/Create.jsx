@@ -41,13 +41,16 @@ const Create = () => {
           setErrors({ ...errors, min_height: "*campo requerido*" });
         else if (isNaN(+state.min_height))
           setErrors({ ...errors, min_height: "*Tiene que ser numero*" });
-        else if(state.min_height) setErrors({...errors,})
-        else setErrors({ ...errors, min_height: "*Min 0.3 metros*" });
+        else if (state.min_height < 0.3) 
+        setErrors({ ...errors, min_height: "*Min 0.3 metros*" });
+        else setErrors({ ...errors, min_height: "" });
         break;
 
       case "max_height":
         if (state.max_height === "")
           setErrors({ ...errors, max_height: "*campo requerido*" });
+        else if (isNaN(+state.max_height))
+          setErrors({ ...errors, max_height: "*Tiene que ser numero*" });
         else if (state.max_height > 20)
           setErrors({ ...errors, max_height: "*Max 20 metros*" });
         else setErrors({ ...errors, max_height: "" });
@@ -56,6 +59,8 @@ const Create = () => {
       case "min_weight":
         if (state.min_weight === "")
           setErrors({ ...errors, min_weight: "*campo requerido*" });
+        else if (isNaN(+state.min_weight))
+          setErrors({ ...errors, min_weight: "*Tiene que ser numero*" });
         else if (state.min_weight < 1)
           setErrors({ ...errors, min_weight: "*Min 1 kg*" });
         else setErrors({ ...errors, min_weight: "" });
@@ -64,6 +69,8 @@ const Create = () => {
       case "max_weight":
         if (state.max_weight === "")
           setErrors({ ...errors, max_weight: "*campo requerido*" });
+        else if (isNaN(+state.max_weight))
+          setErrors({ ...errors, max_weight: "*Tiene que ser numero*" });
         else if (state.max_weight < 100)
           setErrors({ ...errors, max_weight: "*Max 100 kg*" });
         else setErrors({ ...errors, max_weight: "" });
@@ -72,6 +79,8 @@ const Create = () => {
       case "lifespan":
         if (state.lifespan === "")
           setErrors({ ...errors, lifespan: "*campo requerido*" });
+        else if (isNaN(+state.lifespan))
+          setErrors({ ...errors, lifespan: "*Tiene que ser numero*" });
         else if (state.lifespan < 1)
           setErrors({ ...errors, lifespan: "*Min 1 year*" });
         else setErrors({ ...errors, lifespan: "" });
@@ -125,26 +134,36 @@ const Create = () => {
       {console.log(state)}
       <form action="">
         <label htmlFor="">Nombre:</label>
-        {errors.name && (<span className="errorSpan">{errors.name}</span>)}
+        {errors.name && <span className="errorSpan">{errors.name}</span>}
         <input onChange={handleChange} type="text" name="name" id="" />
         <label htmlFor="">Altura:</label>
         <p>Min:</p>
-        {errors.min_height && (<span className='errorSpan'>{errors.min_height}</span>)}
+        {errors.min_height && (
+          <span className="errorSpan">{errors.min_height}</span>
+        )}
         <input onChange={handleChange} type="text" name="min_height" id="" />
         <p>Max:</p>
-        {errors.max_height && (<span className="errorSpan">{errors.max_height}</span>)}
+        {errors.max_height && (
+          <span className="errorSpan">{errors.max_height}</span>
+        )}
         <input onChange={handleChange} type="text" name="max_height" id="" />
 
         <label htmlFor="">Peso:</label>
         <p>Min:</p>
-        {errors.min_weight && (<span className="errorSpan">{errors.min_weight}</span>) }
+        {errors.min_weight && (
+          <span className="errorSpan">{errors.min_weight}</span>
+        )}
         <input onChange={handleChange} type="text" name="min_weight" id="" />
         <p>Max:</p>
-        {errors.max_weight && (<span className="errorSpan">{errors.max_weight}</span>)}
+        {errors.max_weight && (
+          <span className="errorSpan">{errors.max_weight}</span>
+        )}
         <input onChange={handleChange} type="text" name="max_weight" id="" />
 
         <label htmlFor="">Años de vida:</label>
-        {errors.lifespan && (<span className="errorSpan">{errors.lifespan}</span>)}
+        {errors.lifespan && (
+          <span className="errorSpan">{errors.lifespan}</span>
+        )}
         <input onChange={handleChange} type="text" name="lifespan" id="" />
 
         <label htmlFor="">Temperamentos</label>
