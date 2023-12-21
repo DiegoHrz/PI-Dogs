@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Create.css";
-import { createDogs } from "../../Redux/Action/action";
-import {useDispatch} from 'react-redux'
+import { createDogs, getTemperaments } from "../../Redux/Action/action";
+import {useDispatch, useSelector} from 'react-redux'
 
 const Create = () => {
 
   const dispatch = useDispatch()
 
+  const allTemperaments = useSelector(state=>state.temperaments)
+
+  useEffect(() => {
+    //componentWillUnmount
+    //componentDidMount
+    dispatch(getTemperaments())
+  }, [])
+  
 
   //el setState es la funcion que nos permite modificar el estado
   //dentro del useState se setea el estado inicial del estado state
@@ -198,11 +206,8 @@ const Create = () => {
 
 
           <select name="temperaments" onChange={handleChange} id="">
-            <option value=""></option>
-            <option value="Stubborn">Stubborn</option>
-            <option value="Curious">Curious</option>
-            <option value="Playful">Playful</option>
-            <option value="Adventurous">Adventurous</option>
+            {allTemperaments.map(temp=><option key={temp} value="temp">{temp}</option>)}{console.log(allTemperaments.length)}
+            
           </select>
 
           <input type="submit" disabled={desactivadora()} value="Enviar" />
