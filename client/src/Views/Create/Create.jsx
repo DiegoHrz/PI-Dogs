@@ -11,8 +11,8 @@ const Create = () => {
     min_weight: "",
     max_weight: "",
     lifespan: "",
+    image: "",
     temperaments: [],
-    raza: "",
   });
 
   const [errors, setErrors] = useState({
@@ -22,8 +22,8 @@ const Create = () => {
     min_weight: "*campo requerido*",
     max_weight: "*campo requerido*",
     lifespan: "*campo requerido*",
+    image: "",
     temperaments: "*selección requerida*",
-    raza: "",
   });
 
   const validadora = (state, names) => {
@@ -89,8 +89,7 @@ const Create = () => {
       case "temperaments":
         if (state.temperaments.length === 0) {
           setErrors({ ...errors, temperaments: "*seleccion requerida*" });
-        }
-        else setErrors({...errors, temperaments: ""})
+        } else setErrors({ ...errors, temperaments: "" });
     }
   };
 
@@ -141,61 +140,67 @@ const Create = () => {
 
   return (
     <>
-    <div>
-        <h2>CREA TU PROPIA RAZA DE <span className="title">PERRO</span></h2>
-    </div>
-    <div className="form-container">
-      {console.log(state)}
-      <form action="" onSubmit={handleSubmit}>
-        <label htmlFor="">Nombre:</label>
-        {errors.name && <span className="errorSpan">{errors.name}</span>}
-        <input onChange={handleChange} type="text" name="name" id="" />
-        <label htmlFor="">Altura:</label>
-        <p>Min:</p>
-        {errors.min_height && (
-          <span className="errorSpan">{errors.min_height}</span>
-        )}
-        <input onChange={handleChange} type="text" name="min_height" id="" />
-        <p>Max:</p>
-        {errors.max_height && (
-          <span className="errorSpan">{errors.max_height}</span>
-        )}
-        <input onChange={handleChange} type="text" name="max_height" id="" />
+      <div>
+        <h2>
+          CREA TU PROPIA RAZA DE <span className="title">PERRO</span>
+        </h2>
+      </div>
+      <div className="form-container">
+        {console.log(state)}
+        <form action="" onSubmit={handleSubmit}>
+          <label htmlFor="">Nombre:</label>
+          {errors.name && <span className="errorSpan">{errors.name}</span>}
+          <input onChange={handleChange} type="text" name="name" id="" />
+          <label htmlFor="">Altura:</label>
+          <p>Min:</p>
+          {errors.min_height && (
+            <span className="errorSpan">{errors.min_height}</span>
+          )}
+          <input onChange={handleChange} type="text" name="min_height" id="" />
+          <p>Max:</p>
+          {errors.max_height && (
+            <span className="errorSpan">{errors.max_height}</span>
+          )}
+          <input onChange={handleChange} type="text" name="max_height" id="" />
 
-        <label htmlFor="">Peso:</label>
-        <p>Min:</p>
-        {errors.min_weight && (
-          <span className="errorSpan">{errors.min_weight}</span>
-        )}
-        <input onChange={handleChange} type="text" name="min_weight" id="" />
-        <p>Max:</p>
-        {errors.max_weight && (
-          <span className="errorSpan">{errors.max_weight}</span>
-        )}
-        <input onChange={handleChange} type="text" name="max_weight" id="" />
+          <label htmlFor="">Peso:</label>
+          <p>Min:</p>
+          {errors.min_weight && (
+            <span className="errorSpan">{errors.min_weight}</span>
+          )}
+          <input onChange={handleChange} type="text" name="min_weight" id="" />
+          <p>Max:</p>
+          {errors.max_weight && (
+            <span className="errorSpan">{errors.max_weight}</span>
+          )}
+          <input onChange={handleChange} type="text" name="max_weight" id="" />
 
-        <label htmlFor="">Años de vida:</label>
-        {errors.lifespan && (
-          <span className="errorSpan">{errors.lifespan}</span>
-        )}
-        <input onChange={handleChange} type="text" name="lifespan" id="" />
+          <label htmlFor="">Años de vida:</label>
+          {errors.lifespan && (
+            <span className="errorSpan">{errors.lifespan}</span>
+          )}
+          <input onChange={handleChange} type="text" name="lifespan" id="" />
+          
+          <label htmlFor="">Image:</label>
+          <input onChange={handleChange} type="text" name="image" id="" />
 
-        <label htmlFor="">Temperamentos</label>
-        {errors.temperaments &&(<span className="errorSpan">{errors.temperaments}</span>)}
-        <select name="temperaments" onChange={handleChange} id="">
-          <option value=""></option>
-          <option value="Stubborn">Stubborn</option>
-          <option value="Curious">Curious</option>
-          <option value="Playful">Playful</option>
-          <option value="Adventurous">Adventurous</option>
-        </select>
+          <label htmlFor="">Temperamentos</label>
+          {errors.temperaments && (
+            <span className="errorSpan">{errors.temperaments}</span>
+          )}
 
-        <label htmlFor="">Raza:</label>
-        <input onChange={handleChange} type="text" name="raza" id="" />
 
-        <input type="submit" disabled={desactivadora()} value="Enviar" />
-      </form>
-    </div>
+          <select name="temperaments" onChange={handleChange} id="">
+            <option value=""></option>
+            <option value="Stubborn">Stubborn</option>
+            <option value="Curious">Curious</option>
+            <option value="Playful">Playful</option>
+            <option value="Adventurous">Adventurous</option>
+          </select>
+
+          <input type="submit" disabled={desactivadora()} value="Enviar" />
+        </form>
+      </div>
     </>
   );
 };
