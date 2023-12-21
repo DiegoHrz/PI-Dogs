@@ -13,19 +13,23 @@ module.exports = (sequelize) => {
         unique: true,
         allowNull: false,
       },
-      reference_image_id:{
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      height: {
+      min_height: {
         type: DataTypes.FLOAT,
         allowNull: false,
       },
-      weight: {
+      max_height: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+      },
+      min_weight: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+      },
+      max_weight: {
         type: DataTypes.FLOAT,
         allowNull: false,
       },
@@ -35,6 +39,10 @@ module.exports = (sequelize) => {
         allowNull: false,
         validate: {
           len: [2, 25],
+        },
+        image:{
+          type: DataTypes.TEXT,
+          allowNull: true,
         },
       },
     },
