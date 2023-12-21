@@ -29,7 +29,7 @@ dogsHandler.getBreedIdHandler = async (req, res) => {
 
 dogsHandler.getDogsNameHandler = async (req, res) => {
   try {
-    const {name} = req.query
+    const { name } = req.query;
     const respuesta = await getAllBreeds(name);
     res.status(200).json(respuesta);
   } catch (error) {
@@ -39,13 +39,24 @@ dogsHandler.getDogsNameHandler = async (req, res) => {
 
 dogsHandler.createDogsHandler = async (req, res) => {
   try {
-    const { reference_image_id, name, height, weight, lifespan,temperaments } = req.body;
-    const respuesta = await createDogs(
-      reference_image_id,
+    const {
       name,
-      height,
-      weight,
+      min_height,
+      max_height,
+      min_weight,
+      max_weight,
       lifespan,
+      image,
+      temperaments,
+    } = req.body;
+    const respuesta = await createDogs(
+      name,
+      min_height,
+      max_height,
+      min_weight,
+      max_weight,
+      lifespan,
+      image,
       temperaments
     );
     //es un 201 porque a parte de que todo este bien se creo algo

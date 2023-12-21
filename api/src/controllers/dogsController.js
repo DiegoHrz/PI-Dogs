@@ -1,5 +1,5 @@
 const { Dog } = require("../db");
-const {Temperaments} = require ('../db')
+const { Temperaments } = require("../db");
 const axios = require("axios");
 require("dotenv").config();
 const { API_KEY, API_URL } = process.env;
@@ -34,9 +34,11 @@ const getAllBreeds = async (name) => {
   const allBreeds = [...breedsDb, ...breedsApi];
 
   if (name) {
-    const breedsFound = allBreeds.filter((dog) => dog.name.toLowerCase() === name.toLowerCase());
+    const breedsFound = allBreeds.filter(
+      (dog) => dog.name.toLowerCase() === name.toLowerCase()
+    );
 
-    if (!breedsFound.length){
+    if (!breedsFound.length) {
       throw new Error(`No se encontraron razas con el name:${name}`);
     }
     return breedsFound;
@@ -64,18 +66,33 @@ const getBreedId = async (id) => {
 //get dogs name
 
 //post dogs
-const createDogs = async (reference_image_id, name, height, weight, lifespan, temperaments) => {
-  const newDog = await Dog.create({reference_image_id,name,height,weight,lifespan});
-  temperaments.forEach(async(tem)=>{
-    let temperamentsDb = await Temperaments.findAll({where:{ name: tem}})
+const createDogs = async (
+  name,
+  min_height,
+  max_height,
+  min_weight,
+  max_weight,
+  lifespan,
+  image,
+  temperaments
+) => {
+  const newDog = await Dog.create({
+    name,
+    min_height,
+    max_height,
+    min_weight,
+    max_weight,
+    lifespan,
+    image,
+    temperaments,
+  });
+  temperaments.forEach(async (tem) => {
+    let temperamentsDb = await Temperaments.findAll({ where: { name: tem } });
     await newDog.addTemperaments(temperamentsDb);
-  })
+  });
   return newDog;
 };
-
-//al usar thunder client 
-//1ro llamas 
-
-
+//al usar thunder client
+//1ro llamas
 
 module.exports = { getAllBreeds, getBreedId, createDogs };
