@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import "./Create.css";
+import { createDogs } from "../../Redux/Action/action";
+import {useDispatch} from 'react-redux'
 
 const Create = () => {
+
+  const dispatch = useDispatch()
+
+
   //el setState es la funcion que nos permite modificar el estado
   //dentro del useState se setea el estado inicial del estado state
   const [state, setState] = useState({
@@ -136,6 +142,7 @@ const Create = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    dispatch(createDogs(state))
   };
 
   return (
@@ -180,7 +187,7 @@ const Create = () => {
             <span className="errorSpan">{errors.lifespan}</span>
           )}
           <input onChange={handleChange} type="text" name="lifespan" id="" />
-          
+
           <label htmlFor="">Image:</label>
           <input onChange={handleChange} type="text" name="image" id="" />
 

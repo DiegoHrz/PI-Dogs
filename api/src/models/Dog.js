@@ -37,13 +37,10 @@ module.exports = (sequelize) => {
         // max 20
         type: DataTypes.INTEGER,
         allowNull: false,
-        validate: {
-          len: [2, 25],
-        },
-        image:{
-          type: DataTypes.TEXT,
-          allowNull: true,
-        },
+      },
+      image: {
+        type: DataTypes.TEXT,
+        allowNull: true,
       },
     },
     {
