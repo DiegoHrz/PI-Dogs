@@ -206,7 +206,7 @@ const Create = () => {
 
 
           <select name="temperaments" onChange={handleChange} id="">
-            {allTemperaments.map(temp=><option key={temp} value={temp}>{temp}</option>)}{console.log(allTemperaments.length)}
+            {allTemperaments.map(temp=><option key={temp} value={temp}>{temp}</option>)}
             
           </select>
 
