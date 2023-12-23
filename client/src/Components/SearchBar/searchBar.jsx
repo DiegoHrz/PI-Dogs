@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { searchDog } from "../../Redux/Action/action";
 import { useDispatch } from "react-redux";
 
-const SearchBar = () => {
+const Searchbar = () => {
   const dispatch = useDispatch();
 
   const [dog, setDog] = useState("");
@@ -26,4 +26,4 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default Searchbar;

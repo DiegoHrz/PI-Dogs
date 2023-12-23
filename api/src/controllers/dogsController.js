@@ -23,7 +23,7 @@ const getAllBreeds = async (name) => {
       },
     });
     const allBreedsApiMap = data.map((dog) => {
-      return { name: dog.name };
+      return { name: dog.name ,reference_image_id: dog.reference_image_id , weight: dog.weight.imperial, temperament: dog.temperament};
     });
 
     return allBreedsApiMap;

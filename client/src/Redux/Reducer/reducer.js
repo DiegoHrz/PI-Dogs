@@ -1,9 +1,10 @@
 //import action-types
-import { GET_TEMPERAMENTS } from "../Action/action-type";
+import { GET_TEMPERAMENTS, SEARCH_DOG, GET_DOGS } from "../Action/action-type";
 
 //definir el initial state
 let initialState = {
   temperaments: [],
+  dogs: [] // dogs = dogs breed
 
 };
 
@@ -11,11 +12,23 @@ let initialState = {
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     
+    case GET_DOGS:
+      return{
+        ...state,
+        dogs: action.payload,
+      }
+
     case GET_TEMPERAMENTS:
       return {
         ...state,
         temperaments: action.payload,
       };
+
+    case SEARCH_DOG:
+      return{
+        ...state,
+        dogs: action.payload // dogs = dogs breed
+      }
 
     default:
       return state;
