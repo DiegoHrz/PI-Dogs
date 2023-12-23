@@ -16,11 +16,12 @@ export function getTemperaments() {
     return async function (dispatch) {
       try {
         const res = await axios.get("http://localhost:3001/temperaments/");
+        //con esto se envia la peticion al estado global y la guarda:
         dispatch({
             type: GET_TEMPERAMENTS,
             payload: res.data,
         })
-        console.log(res);
+        console.log(res.data);
       } catch (error) {
         return { error: error.message };
       }
