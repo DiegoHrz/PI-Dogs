@@ -6,8 +6,6 @@ const {
 
 const dogsHandler = {};
 
-const axios = require("axios");
-
 dogsHandler.getAllBreedsHandler = async (req, res) => {
   try {
     const respuesta = await getAllBreeds();
@@ -56,7 +54,7 @@ dogsHandler.createDogsHandler = async (req, res) => {
       min_weight,
       max_weight,
       lifespan,
-      image || 'https://dog.ceo/api/breeds/image/random',
+      image || "https://dog.ceo/api/breeds/image/random",
       temperaments
     );
     //es un 201 porque a parte de que todo este bien se creo algo

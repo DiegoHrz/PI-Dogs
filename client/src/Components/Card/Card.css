@@ -1,0 +1,16 @@
+.card-container{
+    width:15rem;
+    background-color: yellow;
+    border: solid 2px black;
+}
+
+.card-info-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+/* .card-title-container{
+
+} */

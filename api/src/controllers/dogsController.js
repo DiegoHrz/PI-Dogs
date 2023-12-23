@@ -19,10 +19,10 @@ const getAllBreeds = async (name) => {
   const allBreedsApi = async () => {
     const { data } = await axios.get(`${API_URL}?api_key=${API_KEY}`);
 
-    const allBreedsApiMap = data.map((dog) => {
+    const allBreedsApiMap = await data.map((dog) => {
       return {
         name: dog.name,
-        reference_image_id: dog.reference_image_id,
+        image: dog.image.url,
         weight: dog.weight.imperial,
         temperament: dog.temperament,
       };
