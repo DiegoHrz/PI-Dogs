@@ -56,7 +56,7 @@ dogsHandler.createDogsHandler = async (req, res) => {
       min_weight,
       max_weight,
       lifespan,
-      image,
+      image || 'https://dog.ceo/api/breeds/image/random',
       temperaments
     );
     //es un 201 porque a parte de que todo este bien se creo algo

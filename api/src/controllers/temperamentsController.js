@@ -9,11 +9,7 @@ const getTemperaments = async () => {
     const temperamentsDB = await Temperaments.findAll();
   
     if (!temperamentsDB.length) {
-      const { data } = await axios.get(API_URL, {
-        params: {
-          "x-api-key": API_KEY,
-        },
-      });
+      const { data } = await axios.get(`${API_URL}?api_key=${API_KEY}`);
   
       const temperaments = Array.from(
         new Set(

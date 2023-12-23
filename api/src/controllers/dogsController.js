@@ -17,13 +17,15 @@ const getAllBreeds = async (name) => {
 
   // get dogs breed in the api
   const allBreedsApi = async () => {
-    const { data } = await axios.get(`${API_URL}`, {
-      params: {
-        "x-api-key": API_KEY,
-      },
-    });
+    const { data } = await axios.get(`${API_URL}?api_key=${API_KEY}`);
+
     const allBreedsApiMap = data.map((dog) => {
-      return { name: dog.name ,reference_image_id: dog.reference_image_id , weight: dog.weight.imperial, temperament: dog.temperament};
+      return {
+        name: dog.name,
+        reference_image_id: dog.reference_image_id,
+        weight: dog.weight.imperial,
+        temperament: dog.temperament,
+      };
     });
 
     return allBreedsApiMap;
@@ -53,11 +55,7 @@ const getBreedId = async (id) => {
     return foundBreed;
   }
 
-  const { data } = await axios.get(`${API_URL}`, {
-    params: {
-      "x-api-key": API_KEY,
-    },
-  });
+  const { data } = await axios.get(`${API_URL}?api_key=${API_KEY}`);
 
   const foundBreed = data.find((dog) => dog.id === +id);
   return foundBreed;

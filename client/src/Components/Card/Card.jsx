@@ -8,8 +8,8 @@ const Card = ({info}) => {
       </div>
       <div>
         <p>{info.reference_image_id}</p>
-        <p>{info.weight}</p>
-        <h4>{info.temperaments}</h4>
+        <h2>{info.weight}</h2>
+        <p>{info.temperament}</p>
       </div>
     </div>
   )
