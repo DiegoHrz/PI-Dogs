@@ -14,12 +14,13 @@ const Searchbar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(searchDog(dog));
+    document.getElementById("search-bar").value = "";
   };
 
   return (
     <div>
       <form action="" onSubmit={handleSubmit}>
-        <input type="text" onChange={handleChange} />
+        <input id="search-bar" type="text" onChange={handleChange} />
         <input type="submit" />
       </form>
     </div>

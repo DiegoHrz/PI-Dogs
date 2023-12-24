@@ -5,6 +5,7 @@ const Card = ({info}) => {
   return (
     <div className='card-container'>
       <div className='card-title-container'>
+        L
         <h2>{info.name}</h2>
       </div>
       <div className='card-info-container'>
