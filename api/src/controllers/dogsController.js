@@ -21,6 +21,7 @@ const getAllBreeds = async (name) => {
 
     const allBreedsApiMap = await data.map((dog) => {
       return {
+        id: dog.id,
         name: dog.name,
         image: dog.image.url,
         weight: dog.weight.imperial,
