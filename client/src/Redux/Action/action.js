@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_DETAILS, GET_DOGS, GET_TEMPERAMENTS, SEARCH_DOG } from "./action-type";
+import { CLEAR_DETAILS, GET_DETAILS, GET_DOGS, GET_TEMPERAMENTS, SEARCH_DOG } from "./action-type";
 
 export function createDogs(state) {
   return async function (dispatch) {
@@ -72,9 +72,21 @@ export function getDogsById(id) {
         type: GET_DETAILS,
         payload: res.data,
       });
-      console.log(res);
+      console.log(res.data);
     } catch (error) {
       return { error: error.message };
     }
   };
+}
+
+export function clearDetails(){
+  return async function (dispatch){
+    try {
+      dispatch({
+        type: CLEAR_DETAILS,
+      })
+    } catch (error) {
+      return { error: error.message };
+    }
+  }
 }

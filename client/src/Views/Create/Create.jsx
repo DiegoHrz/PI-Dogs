@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
 import "./Create.css";
 import { createDogs, getTemperaments } from "../../Redux/Action/action";
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
 
 const Create = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
-
-  const allTemperaments = useSelector(state=>state.temperaments)
+  const allTemperaments = useSelector((state) => state.temperaments);
 
   useEffect(() => {
     //componentWillUnmount
     //componentDidMount
-    dispatch(getTemperaments())
-  }, [])
-  
+    dispatch(getTemperaments());
+  }, []);
 
   //el setState es la funcion que nos permite modificar el estado
   //dentro del useState se setea el estado inicial del estado state
@@ -150,7 +150,8 @@ const Create = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(createDogs(state))
+    dispatch(createDogs(state));
+    history.push("/home");
   };
 
   return (
@@ -204,10 +205,12 @@ const Create = () => {
             <span className="errorSpan">{errors.temperaments}</span>
           )}
 
-
           <select name="temperaments" onChange={handleChange} id="">
-            {allTemperaments.map(temp=><option key={temp} value={temp}>{temp}</option>)}
-            
+            {allTemperaments.map((temp) => (
+              <option key={temp} value={temp}>
+                {temp}
+              </option>
+            ))}
           </select>
 
           <input type="submit" disabled={desactivadora()} value="Enviar" />

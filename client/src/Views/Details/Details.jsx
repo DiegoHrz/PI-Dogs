@@ -1,35 +1,59 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
-import { getDogsById } from "../../Redux/Action/action";
+import { clearDetails, getDogsById } from "../../Redux/Action/action";
 
 const Details = () => {
   const dispatch = useDispatch();
 
   //retornarme dentro de params el id que yo le paso en la ruta
   const params = useParams();
-  console.log(params)
+  console.log(params);
 
   const details = useSelector((state) => state.details);
 
-  
   useEffect(() => {
     dispatch(getDogsById(params.id));
-  }, [dispatch, params.id]);
-  
+    return ()=>{
+      dispatch(clearDetails())
+    }
+
+  }, []);
+
   console.log(details);
   return (
     <div>
       <div>
-        <h1>Details</h1>
+        <h1>Details:</h1>
       </div>
       <div>
-        <h2>Name: </h2>
         <div>
-        <p>Name: </p>
-
+          <p>ID: {details.id} </p>
         </div>
 
+        <div>
+          <h2>{details.name}</h2>
+        </div>
+
+        <div>
+          <img src={details.image && details.image.url} alt={details.id} />
+        </div>
+
+        <div>
+          <p>{details.height && details.height.metric}</p>
+        </div>
+
+        <div>
+          <p>{details.weight && details.weight.metric}</p>
+        </div>
+
+        <div>
+          <p>{details.temperament}</p>
+        </div>
+
+        <div>
+          <p>{details.life_span}</p>
+        </div>
       </div>
     </div>
   );

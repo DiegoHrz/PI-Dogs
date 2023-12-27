@@ -1,5 +1,5 @@
 //import action-types
-import { GET_TEMPERAMENTS, SEARCH_DOG, GET_DOGS, GET_DETAILS } from "../Action/action-type";
+import { GET_TEMPERAMENTS, SEARCH_DOG, GET_DOGS, GET_DETAILS, CLEAR_DETAILS } from "../Action/action-type";
 
 //definir el initial state
 let initialState = {
@@ -35,8 +35,14 @@ function rootReducer(state = initialState, action) {
       return{
         ...state,
         details: action.payload
-
       }
+
+      case CLEAR_DETAILS:
+        return{
+          ...state,
+          details: {}
+        }
+
 
     default:
       return state;
