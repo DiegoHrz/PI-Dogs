@@ -2,10 +2,13 @@ import axios from "axios";
 import { CLEAR_DETAILS, GET_DETAILS, GET_DOGS, GET_TEMPERAMENTS, SEARCH_DOG } from "./action-type";
 
 export function createDogs(state) {
-  return async function (dispatch) {
+  return async function (dispatch,getState) {
     try {
       await axios.post("http://localhost:3001/dogs/", state);
-      console.log("Raza creada");
+      console.log("RAZA CREADA");
+      dispatch(getDogs()); // Dispatch getDogs action to update state.dogs
+      const updatedState = getState(); // Assuming you have access to getState
+      console.log("Updated State:", updatedState);
     } catch (error) {
       return { error: error.message };
     }

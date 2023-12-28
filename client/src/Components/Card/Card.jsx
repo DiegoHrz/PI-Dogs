@@ -13,9 +13,10 @@ const Card = ({info}) => {
       </div>
       <div className='card-info-container'>
         <img src={info.image} alt={info.name} height="100px"/>
-        <img src={info.image} alt={info.name} height="100px"/>
-        <h2>Weight: {info.weight}</h2>
+        <h2>Weight: {info.weight}{(info.min_weight && info.max_weight) && (<span>{info.min_weight} - {info.max_weight}</span>)}  </h2>
+
         <p>Temperaments: {info.temperament}</p>
+        {/* <p>Temperaments: {info.temperaments.join(', ')}</p> */}
       </div>
     </div>
   )

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import "./Create.css";
 import { createDogs, getTemperaments } from "../../Redux/Action/action";
 import { useDispatch, useSelector } from "react-redux";
@@ -151,7 +151,7 @@ const Create = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(createDogs(state));
-    history.push("/home");
+    // history.push("/home");)
   };
 
   return (
