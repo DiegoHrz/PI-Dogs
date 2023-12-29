@@ -3,9 +3,10 @@
   width: 100%;
   height: 100vh;
   /* background-image: url('./icons/omfgdogs.gif'); */
-  background-color: aqua;
+  background-color: black;
   font-size: larger;
   font-weight: 600;
+  color: aliceblue;
 }
 
 .App-logo {

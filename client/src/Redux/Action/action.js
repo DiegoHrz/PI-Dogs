@@ -52,6 +52,7 @@ export function searchDog(dog) {
       });
       console.log(res);
     } catch (error) {
+      alert('Ingresar una raza de perros correcta')
       return { error: error.message };
     }
   };

@@ -14,10 +14,9 @@ const Details = () => {
 
   useEffect(() => {
     dispatch(getDogsById(params.id));
-    return ()=>{
-      dispatch(clearDetails())
-    }
-
+    return () => {
+      dispatch(clearDetails());
+    };
   }, []);
 
   console.log(details);
@@ -37,12 +36,10 @@ const Details = () => {
 
         <div>
           <img src={details.image && details.image.url} alt={details.id} />
-          <img src={details.image } alt={details.id} />
+          <img src={details.image} alt={details.id} />
         </div>
 
-        <div>
-
-        </div>
+        <div></div>
 
         <div>
           <p>{details.weight && details.weight.metric}</p>
