@@ -96,7 +96,7 @@ function rootReducer(state = initialState, action) {
           return {
             ...state,
             dogs: [...variableDescendente].splice(0, ITEMS_PER_PAGE),
-            dogsBackup: variableAscendente,
+            dogsBackup: variableDescendente,
             currentPage: 0
           }
 
