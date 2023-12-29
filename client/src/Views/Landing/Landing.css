@@ -2,15 +2,28 @@
   background-color: black;
   height: 110%;
   margin-top: -170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .landing-title {
   color: red;
   background-color: black;
-  font-size: 200px;
+  font-size: 400px;
   letter-spacing: 10px;
   margin: 0;
+  background: linear-gradient(to right, rgb(255, 61, 61), rgb(188, 188, 41)); /* Ajusta los colores según sea necesario */
+  -webkit-background-clip: text; /* Esto permite que el degradado se aplique solo al texto */
+  color: transparent; /* Hace que el texto sea transparente, revelando el degradado de fondo */
+  border-bottom-left-radius: 20px; /* Ajusta el radio según sea necesario */
+  border-bottom-right-radius: 20px;
 }
+
+.Link-tag {
+  text-decoration: none;
+}
+
 .landing-title-container {
   margin: 10rem 0 0 0;
 }
@@ -20,10 +33,29 @@
   justify-content: center;
 }
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .landing-button {
-  border-radius: 100%;
-  color: black;
-  height: auto;
-  font-size: 150px;
-  width: auto;
+  border-radius: 50%;
+  border: 10px solid rgb(179, 161, 161);
+  height: 150px;
+  width: 150px;
+  font-size: 100px;
+  background-color: rgb(231, 231, 231);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  animation: pulse 3s ease-in-out infinite; /* Aplicar la animación de pulso */
 }

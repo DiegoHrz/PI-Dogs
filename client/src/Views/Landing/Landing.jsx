@@ -9,7 +9,7 @@ const Landing = () => {
         <h1 className="landing-title">DOGFLIX</h1>
       </div>
       <div>
-        <Link to={"/home"}>
+        <Link to={"/home"} className='Link-tag'>
           <div className="landing-button-container">
             <button className="landing-button">🐾</button>
           </div>
