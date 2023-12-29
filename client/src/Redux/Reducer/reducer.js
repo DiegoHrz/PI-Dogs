@@ -82,7 +82,7 @@ function rootReducer(state = initialState, action) {
         })
         return {
           ...state,
-          dogs: variableAscendente.splice(0, ITEMS_PER_PAGE),
+          dogs: [...variableAscendente].splice(0, ITEMS_PER_PAGE),
           dogsBackup: variableAscendente,
           currentPage: 0
         }
