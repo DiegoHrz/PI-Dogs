@@ -25,7 +25,7 @@ function rootReducer(state = initialState, action) {
     case GET_DOGS:
       return {
         ...state,
-        dogs: action.payload,
+        dogs: [...action.payload].splice(0, ITEMS_PER_PAGE),
         dogsBackup: action.payload,
       };
 
@@ -61,6 +61,9 @@ function rootReducer(state = initialState, action) {
           ? nextPage * ITEMS_PER_PAGE
           : prevPage * ITEMS_PER_PAGE;
 
+      if (action.payload === "next" && firstIndex >= state.dogsBackup.length)
+        return state;
+      else if (action.payload === "prev" && prevPage < 0) return state;
       return {
         ...state,
         dogs: [...state.dogsBackup].splice(firstIndex, ITEMS_PER_PAGE), //desde mi 1stIndex quiero que me renderices la cantidad de items que te paso por pagina
