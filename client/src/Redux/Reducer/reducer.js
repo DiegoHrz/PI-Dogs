@@ -88,6 +88,17 @@ function rootReducer(state = initialState, action) {
         }
 
         case "ZA":
+          let variableDescendente = [...state.dogsBackup].sort((prev, next)=>{
+            if(prev.name.toLowerCase() > next.name.toLowerCase()) return -1
+            if(prev.name.toLowerCase() < next.name.toLowerCase()) return 1
+            return 0
+          })
+          return {
+            ...state,
+            dogs: [...variableDescendente].splice(0, ITEMS_PER_PAGE),
+            dogsBackup: variableAscendente,
+            currentPage: 0
+          }
 
         default:
           return state
