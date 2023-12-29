@@ -6,6 +6,7 @@ import {
   GET_DETAILS,
   CLEAR_DETAILS,
   PAGINADO,
+  ALPHABETIC_SORT,
 } from "../Action/action-type";
 
 //definir el initial state
@@ -69,6 +70,29 @@ function rootReducer(state = initialState, action) {
         dogs: [...state.dogsBackup].splice(firstIndex, ITEMS_PER_PAGE), //desde mi 1stIndex quiero que me renderices la cantidad de items que te paso por pagina
         currentPage: action.payload === "next" ? nextPage : prevPage,
       };
+
+    case ALPHABETIC_SORT:
+      switch (action.payload) {
+        case "AZ":
+
+        let variableAscendente = [...state.dogsBackup].sort((prev, next)=>{
+          if(prev.name.toLowerCase() > next.name.toLowerCase()) return 1
+          if(prev.name.toLowerCase() < next.name.toLowerCase()) return -1
+          return 0
+        })
+        return {
+          ...state,
+          dogs: variableAscendente.splice(0, ITEMS_PER_PAGE),
+          dogsBackup: variableAscendente,
+          currentPage: 0
+        }
+
+        case "ZA":
+
+        default:
+          return state
+
+      }
 
     default:
       return state;

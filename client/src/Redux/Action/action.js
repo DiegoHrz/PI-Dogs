@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  ALPHABETIC_SORT,
   CLEAR_DETAILS,
   GET_DETAILS,
   GET_DOGS,
@@ -113,3 +114,17 @@ export function page(order) {
     }
   };
 }
+
+export function dogsAlphabeticSortAZ(orderAZ) {
+  return function (dispatch) {
+    try {
+      dispatch({
+        type: ALPHABETIC_SORT,
+        payload: orderAZ,
+      });
+    } catch (error) {
+      return { error: error.message };
+    }
+  };
+}
+

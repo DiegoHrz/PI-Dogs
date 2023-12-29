@@ -1,0 +1,29 @@
+.landing-container {
+  background-color: black;
+  height: 110%;
+  margin-top: -170px;
+}
+
+.landing-title {
+  color: red;
+  background-color: black;
+  font-size: 200px;
+  letter-spacing: 10px;
+  margin: 0;
+}
+.landing-title-container {
+  margin: 10rem 0 0 0;
+}
+
+.landing-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.landing-button {
+  border-radius: 100%;
+  color: black;
+  height: auto;
+  font-size: 150px;
+  width: auto;
+}
