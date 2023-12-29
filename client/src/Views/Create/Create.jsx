@@ -5,6 +5,7 @@ import { createDogs, getTemperaments } from "../../Redux/Action/action";
 import { useDispatch, useSelector } from "react-redux";
 
 const Create = () => {
+  
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -151,7 +152,7 @@ const Create = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(createDogs(state));
-    // history.push("/home");)
+    history.push("/home");
   };
 
   return (

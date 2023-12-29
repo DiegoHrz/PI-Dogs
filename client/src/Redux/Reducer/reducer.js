@@ -1,23 +1,33 @@
 //import action-types
-import { GET_TEMPERAMENTS, SEARCH_DOG, GET_DOGS, GET_DETAILS, CLEAR_DETAILS } from "../Action/action-type";
+import {
+  GET_TEMPERAMENTS,
+  SEARCH_DOG,
+  GET_DOGS,
+  GET_DETAILS,
+  CLEAR_DETAILS,
+  PAGINADO,
+} from "../Action/action-type";
 
 //definir el initial state
 let initialState = {
   temperaments: [],
   dogs: [], // dogs = dogs breed
-  details: {}
-
+  dogsBackup: [],
+  details: {},
+  currentPage: 0,
 };
 
 //definir el rootReducer
 function rootReducer(state = initialState, action) {
+  const ITEMS_PER_PAGE = 8;
+
   switch (action.type) {
-    
     case GET_DOGS:
-      return{
+      return {
         ...state,
         dogs: action.payload,
-      }
+        dogsBackup: action.payload,
+      };
 
     case GET_TEMPERAMENTS:
       return {
@@ -26,27 +36,39 @@ function rootReducer(state = initialState, action) {
       };
 
     case SEARCH_DOG:
-      return{
+      return {
         ...state,
-        dogs: action.payload // dogs = dogs breed
+        dogs: action.payload, // dogs = dogs breed
       };
 
     case GET_DETAILS:
-      return{
+      return {
         ...state,
-        details: action.payload
-      }
+        details: action.payload,
+      };
 
-      case CLEAR_DETAILS:
-        return{
-          ...state,
-          details: {}
-        }
+    case CLEAR_DETAILS:
+      return {
+        ...state,
+        details: {},
+      };
 
+    case PAGINADO:
+      const nextPage = state.currentPage + 1;
+      const prevPage = state.currentPage - 1;
+      const firstIndex =
+        action.payload === "next"
+          ? nextPage * ITEMS_PER_PAGE
+          : prevPage * ITEMS_PER_PAGE;
+
+      return {
+        ...state,
+        dogs: [...state.dogsBackup].splice(firstIndex, ITEMS_PER_PAGE), //desde mi 1stIndex quiero que me renderices la cantidad de items que te paso por pagina
+        currentPage: action.payload === "next" ? nextPage : prevPage,
+      };
 
     default:
       return state;
-      break;
   }
 }
 

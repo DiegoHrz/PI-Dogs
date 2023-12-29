@@ -37,10 +37,11 @@ const Details = () => {
 
         <div>
           <img src={details.image && details.image.url} alt={details.id} />
+          <img src={details.image } alt={details.id} />
         </div>
 
         <div>
-          <p>{details.height && details.height.metric}</p>
+
         </div>
 
         <div>
