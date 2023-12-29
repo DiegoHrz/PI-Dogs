@@ -37,3 +37,20 @@ p {
     font-size: 50px;
     display: block;
 }
+
+
+.form-tems-container{
+    display: flex;
+    /*Permite que los elementos se envuelvan si no caben en una sola fila */
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.form-tem-container{
+    margin: 5px;
+    border: 3px solid rgb(21, 104, 176);
+    border-radius: 10px;
+    /* Ajusta el ancho según el contenido */
+    width: fit-content
+
+}

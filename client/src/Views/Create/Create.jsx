@@ -213,6 +213,9 @@ const Create = () => {
               </option>
             ))}
           </select>
+          <div className="form-tems-container">
+            {state.temperaments.map((selectedTemp)=><div className="form-tem-container"><p>{selectedTemp}</p></div>)}
+          </div>
 
           <input type="submit" disabled={desactivadora()} value="Enviar" />
         </form>
