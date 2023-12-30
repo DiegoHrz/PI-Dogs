@@ -3,11 +3,13 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  /* define la transicion */
   transition: all 400ms ease-in-out;
-  &:hover {
-    transform: scale(1.025);
-  }
+}
 
+/* y ahora usa el hover para que suceda */
+.card-container:hover {
+  transform: scale(1.025);
 }
 
 .card {
@@ -37,12 +39,15 @@
 }
 
 .card-body h3 {
-  margin: 0 0 5px;
+  margin: 0 0 15px 0;
+  display: flex;
+  justify-content: center;
 }
 .card-body p {
-  font-family: "Roboto";
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight: 100;
   font-size: 13px;
-  margin: 0 0 15px;
+  margin: 0 0 15px 0px;
   color: #ffffff;
 }
 
@@ -50,7 +55,7 @@
   width: 100%;
   min-height: 30px;
   color: black;
-  background-color: #c4221d;
+  background-color: #e42019;
   display: inline-flex;
   justify-content: center;
   align-items: center;
