@@ -38,7 +38,9 @@ const Home = () => {
           </div>
           <div className="home-Link-container">
             <Link to={"/create"}>
-              <button className="buttom-create">Crea tu <span className="home-button-perro">🐕</span> </button>
+              <button className="buttom-create">
+                Crea tu <span className="home-button-perro">🐕</span>{" "}
+              </button>
             </Link>
           </div>
         </div>
@@ -49,21 +51,59 @@ const Home = () => {
           <h2>TUS PERROS FAVORITOS</h2>
         </div>
         <div className="home-body-logic-container">
-          <div>
-            <label htmlFor="">Ordenamientos </label>
-            <button className="home-button-logic" name="AZ" onClick={orderAZ}>
-              AZ↑
-            </button>
-            <button className="home-button-logic" name="ZA" onClick={orderAZ}>
-              ZA↓
-            </button>
+          <div className="ordenamientos-logic-container">
+            <div>Ordenamientos</div>
+            <div>
+              <div>
+                <label htmlFor=""></label>
+                <button
+                  className="home-button-logic"
+                  name="AZ"
+                  onClick={orderAZ}
+                >
+                  AZ↑
+                </button>
+                <button
+                  className="home-button-logic"
+                  name="ZA"
+                  onClick={orderAZ}
+                >
+                  ZA↓
+                </button>
+              </div>
+              <div>
+                <label htmlFor=""></label>
+                <button
+                  className="home-button-logic"
+                  name="AZ"
+                  onClick={orderAZ}
+                >
+                  KG↑
+                </button>
+                <button
+                  className="home-button-logic"
+                  name="ZA"
+                  onClick={orderAZ}
+                >
+                  KG↓
+                </button>
+              </div>
+            </div>
           </div>
           <div>
             <label htmlFor="">Paginado </label>
-            <button className="home-button-logic" name="prev" onClick={paginado}>
+            <button
+              className="home-button-logic"
+              name="prev"
+              onClick={paginado}
+            >
               ᐗ
             </button>
-            <button className="home-button-logic" name="next" onClick={paginado}>
+            <button
+              className="home-button-logic"
+              name="next"
+              onClick={paginado}
+            >
               ᐓ
             </button>
           </div>

@@ -1,23 +1,45 @@
 .landing-container {
   background-color: black;
   height: 110%;
-  margin-top: -170px;
+  margin-top: -100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: linear-gradient(90deg, #000000, #000000,#000000, #fff8f1, #000000, #000000,#000000);
+  background-size: 300% 300%;
+  animation: color 12s ease-in-out infinite;
+}
+
+@keyframes color {
+  0% {
+    background-position: 0, 50%;
+  }
+  50% {
+    background-position: 100%, 50%;
+  }
+  100% {
+    background-position: 0, 50%;
+  }
 }
 
 .landing-title {
   color: red;
   background-color: black;
-  font-size: 400px;
+  text-shadow: 0 0 120px rgba(225, 34, 34, 0.7);
+  font-size: 300px;
   letter-spacing: 10px;
   margin: 0;
-  background: linear-gradient(to right, rgb(255, 61, 61), rgb(188, 188, 41)); /* Ajusta los colores según sea necesario */
+  background: linear-gradient(
+    to right,
+    rgb(101, 12, 12),
+    rgb(110, 12, 4),
+    rgb(50, 13, 9)
+  ); /* Ajusta los colores según sea necesario */
   -webkit-background-clip: text; /* Esto permite que el degradado se aplique solo al texto */
+  background-clip: none;
   color: transparent; /* Hace que el texto sea transparente, revelando el degradado de fondo */
-  border-bottom-left-radius: 20px; /* Ajusta el radio según sea necesario */
-  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 200px; /* Ajusta el radio según sea necesario */
+  border-bottom-right-radius: 200px;
 }
 
 .Link-tag {
@@ -25,12 +47,13 @@
 }
 
 .landing-title-container {
-  margin: 10rem 0 0 0;
+  margin: 4rem 0 0 0;
 }
 
 .landing-button-container {
   display: flex;
   justify-content: center;
+  margin-top: 50px;
 }
 
 @keyframes pulse {
@@ -47,11 +70,11 @@
 
 .landing-button {
   border-radius: 50%;
-  border: 10px solid rgb(179, 161, 161);
+  border: 15px solid rgb(193, 189, 185);
   height: 150px;
   width: 150px;
   font-size: 100px;
-  background-color: rgb(231, 231, 231);
+  background-color: rgb(212, 212, 212);
   color: white;
   display: flex;
   align-items: center;

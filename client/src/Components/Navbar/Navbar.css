@@ -24,4 +24,10 @@
 
 .navbar-searchbar-container{
 margin: 30px;
+display: flex;
+flex-direction: column;
+}
+
+.navbar-Link-container img{
+    height: 30px;
 }
