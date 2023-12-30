@@ -1,0 +1,79 @@
+.home-header-container {
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.1) 75%,
+      rgba(0, 0, 0, 1)
+    ),
+    url("./harris blackford hill (banner).jpg");
+  height: 1px;
+  margin-top: -520px;
+  margin-bottom: 0px;
+  padding: 300px 0px 700px 0;
+  background-color: black;
+}
+.home-header-container-no-image {
+  padding-top: 250px;
+}
+
+.home-h1 {
+  font-size: 10px;
+}
+
+.home-p-container {
+  max-width: 28%; /* Establece el ancho máximo al 50% del ancho de la pantalla */
+  margin-left: 50px;
+  word-wrap: break-word;
+  font-size: 1.2rem;
+  font-weight: 500;
+  display: flex;
+  text-align: left;
+  line-height: 25px;
+  margin-top: 15px;
+}
+.home-Link-container {
+  display: flex;
+  margin-left: 50px;
+  margin-top: 30px;
+}
+
+.buttom-create {
+  height: 50px;
+  width: 170px;
+  border-radius: 6px;
+  border: none;
+  background-color: rgba(47, 46, 46, 0.2);
+  color: white;
+  font-size: 20px;
+  font-weight: 550;
+}
+
+.home-body-container {
+  background-color: black;
+  margin-top: -60px;
+}
+
+.home-h1 {
+  display: flex;
+  margin-left: 50px;
+  font-size: 70px;
+}
+.home-body-title-container {
+  font-size: 20px;
+  display: flex;
+  justify-content: left;
+  color: white;
+  margin: 0px 0px 20px 20px;
+}
+
+.home-body-logic-container {
+  display: flex;
+  justify-content: space-between;
+  margin: -10px 100px 22px 100px;
+}
+
+.home-button-logic {
+  margin: 0px 5px 0px 5px;
+  border-radius: 3px;
+  border: none;
+  background-color: rgb(255, 255, 255);
+}

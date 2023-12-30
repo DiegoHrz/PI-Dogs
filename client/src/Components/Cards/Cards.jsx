@@ -9,9 +9,12 @@ const Cards = () => {
   console.log("dogs:", dogs);
   return (
     <div className="cards-container">
-      {dogs.map((dog, index) => (
-        <Card key={index} info={dog} />
-      ))}
+
+      <div className="cards-container-card">
+        {dogs.map((dog, index) => (
+          <Card key={index} info={dog} />
+        ))}
+      </div>
     </div>
   );
 };

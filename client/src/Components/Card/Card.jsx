@@ -19,7 +19,7 @@ const Card = ({ info }) => {
           <div className="card-footer">
             Weight: {info.weight}
             {info.min_weight && info.max_weight && (
-              <span>
+              <span className=""><p className="invisible-tag">-</p>
                 {info.min_weight} - {info.max_weight}
               </span>
             )}{" "}

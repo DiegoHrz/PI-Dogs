@@ -1,8 +1,15 @@
+.cards-container-card{
+  background-color: black;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: -20px;
+  margin: 10px;
+}
 
-.cards-container {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+.cards-container{
+    margin-top: -100px;
+    padding-bottom: 100px;
 }

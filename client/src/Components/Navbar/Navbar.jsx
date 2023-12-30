@@ -1,11 +1,14 @@
 import React from "react";
-import Searchbar from "../Searchbar/Searchbar";
+import "./Navbar.css"
 
 const Navbar = () => {
   return (
-    <div>
-      <h1>Navbar</h1>
-      <Searchbar />
+    <div className="navbar-container">
+      <div className="navbar-title-container">
+        <h1 className="navbar-title">DOGFLIX</h1>
+      </div>
+      <div className="navbar-searchbar-container">
+      </div>
     </div>
   );
 };
