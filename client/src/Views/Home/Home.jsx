@@ -38,7 +38,7 @@ const Home = () => {
           </div>
           <div className="home-Link-container">
             <Link to={"/create"}>
-              <button className="buttom-create">Crea tu 🐕 </button>
+              <button className="buttom-create">Crea tu <span className="home-button-perro">🐕</span> </button>
             </Link>
           </div>
         </div>

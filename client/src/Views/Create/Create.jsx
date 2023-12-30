@@ -5,6 +5,7 @@ import { createDogs, getTemperaments } from "../../Redux/Action/action";
 import { useDispatch, useSelector } from "react-redux";
 
 const Create = () => {
+  
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -158,85 +159,44 @@ const Create = () => {
     <div className="create-container">
       <div className="form-container">
         {console.log(state)}
-        <form
-          action=""
-          className="create-form-container"
-          onSubmit={handleSubmit}
-        >
-          <div className="create-label-input"></div>
-          <label className="form-label" htmlFor="">
-            Nombre:
-          </label>
+        <form action="" className="create-form-container" onSubmit={handleSubmit}>
+          <label className='form-label' htmlFor="">Nombre:</label>
           {errors.name && <span className="errorSpan">{errors.name}</span>}
-          <div className="create-label-input">
-            <input onChange={handleChange} type="text" name="name" id="" />
-            <label className="form-label" htmlFor="">
-              Altura:
-            </label>
-            <p className="form-label">Min:</p>
-            {errors.min_height && (
-              <span className="errorSpan">{errors.min_height}</span>
-            )}
-            <input
-              onChange={handleChange}
-              type="text"
-              name="min_height"
-              id=""
-            />
-            <p className="form-label">Max:</p>
-            {errors.max_height && (
-              <span className="errorSpan">{errors.max_height}</span>
-            )}
-            <input
-              onChange={handleChange}
-              type="text"
-              name="max_height"
-              id=""
-            />
-          </div>
+          <input onChange={handleChange} type="text" name="name" id="" />
+          <label className='form-label' htmlFor="">Altura:</label>
+          <p className='form-label'>Min:</p>
+          {errors.min_height && (
+            <span className="errorSpan">{errors.min_height}</span>
+          )}
+          <input onChange={handleChange} type="text" name="min_height" id="" />
+          <p className='form-label'>Max:</p>
+          {errors.max_height && (
+            <span className="errorSpan">{errors.max_height}</span>
+          )}
+          <input onChange={handleChange} type="text" name="max_height" id="" />
 
-          <div className="create-label-input">
-            <label htmlFor="" className="form-label">
-              Peso:
-            </label>
-            <p className="form-label">Min:</p>
-            {errors.min_weight && (
-              <span className="errorSpan">{errors.min_weight}</span>
-            )}
-            <input
-              onChange={handleChange}
-              type="text"
-              name="min_weight"
-              id=""
-            />
-            <p className="form-label">Max:</p>
-            {errors.max_weight && (
-              <span className="errorSpan">{errors.max_weight}</span>
-            )}
-            <input
-              onChange={handleChange}
-              type="text"
-              name="max_weight"
-              id=""
-            />
-          </div>
+          <label htmlFor="" className='form-label'>Peso:</label>
+          <p className='form-label'>Min:</p>
+          {errors.min_weight && (
+            <span className="errorSpan">{errors.min_weight}</span>
+          )}
+          <input onChange={handleChange} type="text" name="min_weight" id="" />
+          <p className='form-label'>Max:</p>
+          {errors.max_weight && (
+            <span className="errorSpan">{errors.max_weight}</span>
+          )}
+          <input onChange={handleChange} type="text" name="max_weight" id="" />
 
-          <label htmlFor="" className="form-label">
-            Años de vida:
-          </label>
+          <label htmlFor="" className='form-label'>Años de vida:</label>
           {errors.lifespan && (
             <span className="errorSpan">{errors.lifespan}</span>
           )}
           <input onChange={handleChange} type="text" name="lifespan" id="" />
 
-          <label htmlFor="" className="form-label">
-            Image:
-          </label>
+          <label htmlFor="" className='form-label'>Image:</label>
           <input onChange={handleChange} type="text" name="image" id="" />
 
-          <label htmlFor="" className="form-label">
-            Temperamentos
-          </label>
+          <label htmlFor="" className='form-label'>Temperamentos</label>
           {errors.temperaments && (
             <span className="errorSpan">{errors.temperaments}</span>
           )}
@@ -249,11 +209,7 @@ const Create = () => {
             ))}
           </select>
           <div className="form-tems-container">
-            {state.temperaments.map((selectedTemp, index) => (
-              <div className="form-tem-container" key={index}>
-                <p>{selectedTemp}</p>
-              </div>
-            ))}
+            {state.temperaments.map((selectedTemp,index)=><div className="form-tem-container" key={index}><p>{selectedTemp}</p></div>)}
           </div>
 
           <input type="submit" disabled={desactivadora()} value="Enviar" />
