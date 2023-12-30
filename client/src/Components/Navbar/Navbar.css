@@ -8,9 +8,11 @@
     display: flex;
     font-size: 20px;
     padding-top: 0;
-    color: rgb(208, 23, 23);
     margin-left: 25px ;
     margin-top: 50px;
+}
+.navbar-link{
+    text-decoration: none;
 }
 
 .navbar-title{
@@ -20,6 +22,9 @@
     letter-spacing: -1px;
     width: 100px;
     font-family:Arial, Helvetica, sans-serif;
+    color: rgb(208, 23, 23);
+
+
 }
 
 .navbar-searchbar-container{
