@@ -39,14 +39,25 @@ const getAllBreeds = async (name) => {
 
     const allBreedsApiMap = await data.map((dog) => {
 
-      //pasar 
+      let [min_weight, max_weight] = dog.weight.metric.split("-")
+      let [min_height, max_height] = dog.height.metric.split("-")
+
+      //peso max_weight imperial
+      //height min_height imperial
+      //height min_height imperial
+      //pasar temperamentos de array a []
 
       return {
         id: dog.id,
         name: dog.name,
         image: dog.image.url,
-        weight: dog.weight.imperial,
+        min_weight: +min_weight,
+        max_weight: +max_weight,
+        min_height: +min_height,
+        max_height: +max_height,
         Temperaments: dog.temperament,
+        bred_for: dog.bred_for,
+        breed_group: dog.breed_group,
       };
     });
 
