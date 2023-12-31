@@ -11,7 +11,7 @@ const Landing = () => {
       <div>
         <Link to={"/home"} className='Link-tag'>
           <div className="landing-button-container">
-            <button className="landing-button">🐾</button>
+            <div className="landing-button">🐾</div>
           </div>
         </Link>
       </div>
