@@ -14,7 +14,7 @@ const Card = ({ info }) => {
           <div className="card-body">
             <h3>{info.name}</h3>
 
-            <p>{info.temperament}</p>
+            <p>{info.Temperaments}</p>
           </div>
           <div className="card-footer">
             Weight: {info.weight}

@@ -21,12 +21,15 @@ const getAllBreeds = async (name) => {
     });
     const modifiedBreeds = breedsDb.map((dog) => {
       const temperamentsNames = dog.Temperaments.map((temp) => temp.name);
+
+      //AL SER DOG una instancia del modelo sequelize .dataValues obtiene un objeto que contiene los valores reales de los campos del modelo, en lugar de toda la instancia del modelo.
+
       return {
         ...dog.dataValues,
-        temperament: temperamentsNames,
+        Temperaments: temperamentsNames,
+        origin: "db",
       };
     });
-  
     return modifiedBreeds;
   };
 
@@ -35,12 +38,15 @@ const getAllBreeds = async (name) => {
     const { data } = await axios.get(`${API_URL}?api_key=${API_KEY}`);
 
     const allBreedsApiMap = await data.map((dog) => {
+
+
+
       return {
         id: dog.id,
         name: dog.name,
         image: dog.image.url,
         weight: dog.weight.imperial,
-        temperament: dog.temperament,
+        Temperaments: dog.temperament,
       };
     });
 
