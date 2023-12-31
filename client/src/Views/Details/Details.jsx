@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
 import { clearDetails, getDogsById } from "../../Redux/Action/action";
+import "./Details.css";
 
 const Details = () => {
   const dispatch = useDispatch();
@@ -19,9 +20,9 @@ const Details = () => {
     };
   }, []);
 
-  console.log(details);
+  console.log(details.name);
   return (
-    <div>
+    <div className="details-container">
       <div>
         <h1>Details:</h1>
       </div>
@@ -49,16 +50,21 @@ const Details = () => {
         </div>
 
         <div>
-          <p>Temperaments: {`${details.Temperaments},`}</p>
+          <p>
+            Temperaments:{" "}
+            {details.Temperaments && details.Temperaments.join(" , ")}
+          </p>
         </div>
         <div>
-          <p>Breed group: {details.breed_group}</p>
+          <p>
+            Breed group: {details.breed_group ? details.breed_group : "none"}
+          </p>
         </div>
         <div>
-          <p>Bred for: {details.bred_for}</p>
+          <p>Bred for: {details.bred_for ? details.bred_for : "none"}</p>
         </div>
         <div>
-          <p>Lifespan: {details.lifespan}</p>
+          <p>Lifespan: {details.lifespan} years</p>
         </div>
       </div>
     </div>

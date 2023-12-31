@@ -30,6 +30,7 @@ const getAllBreeds = async (name) => {
         origin: "db",
       };
     });
+    console.log(modifiedBreeds);
     return modifiedBreeds;
   };
 
@@ -84,20 +85,15 @@ const getAllBreeds = async (name) => {
 
 //get dogs idRaza
 const getBreedId = async (id) => {
-  if (isNaN(id)) {
-    const foundBreed = await Dog.findByPk(id);
-    return foundBreed;
-  } else {
-    const allDoggiesDbAndApi = await getAllBreeds();
+  const allDoggiesDbAndApi = await getAllBreeds();
+
+  //Si es numero el id
+  if (!isNaN(id)) {
     const foundBreed = allDoggiesDbAndApi.find((doggie) => doggie.id === +id);
-    return foundBreed
+    return foundBreed;
   }
-};
-
-const gtBreedId = async (id) => {
-  const { data } = await axios.get(`${API_URL}?api_key=${API_KEY}`);
-
-  const foundBreed = data.find((dog) => dog.id === +id);
+  // de lo contrario es un uuid (string)
+  const foundBreed = allDoggiesDbAndApi.find((doggie) => doggie.id === id);
   return foundBreed;
 };
 
