@@ -35,22 +35,25 @@ const Details = () => {
         </div>
 
         <div>
-          <img src={details.image && details.image.url} alt={details.id} />
           <img src={details.image} alt={details.id} />
         </div>
-
-        <div></div>
-
         <div>
-          <p>{details.weight && details.weight.metric}</p>
+          <p>
+            {details.min_height} - {details.max_height}
+          </p>
+        </div>
+        <div>
+          <p>
+            {details.min_weight} - {details.max_weight}
+          </p>
         </div>
 
         <div>
-          <p>{details.temperament}</p>
+          <p>{`${details.Temperaments},`}</p>
         </div>
 
         <div>
-          <p>{details.life_span}</p>
+          <p>{details.lifespan}</p>
         </div>
       </div>
     </div>

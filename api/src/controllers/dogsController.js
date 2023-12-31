@@ -57,7 +57,7 @@ const getAllBreeds = async (name) => {
         Temperaments: temperamentsArray,
         bred_for: dog.bred_for,
         breed_group: dog.breed_group,
-        lifespan: dog.life_span
+        lifespan: dog.life_span,
       };
     });
 
@@ -83,14 +83,9 @@ const getAllBreeds = async (name) => {
 
 //get dogs idRaza
 const getBreedId = async (id) => {
-  if (isNaN(id)) {
-    const foundBreed = await Dog.findByPk(id);
-    return foundBreed;
-  }
+  const allDoggiesDbAndApi = await getAllBreeds();
 
-  const { data } = await axios.get(`${API_URL}?api_key=${API_KEY}`);
-
-  const foundBreed = data.find((dog) => dog.id === +id);
+  const foundBreed = allDoggiesDbAndApi.find((doggie) => doggie.id === +id);
   return foundBreed;
 };
 
