@@ -31,7 +31,7 @@ const Details = () => {
         </div>
 
         <div>
-          <h2>{details.name}</h2>
+          <h2>Breed's Name: {details.name}</h2>
         </div>
 
         <div>
@@ -39,21 +39,26 @@ const Details = () => {
         </div>
         <div>
           <p>
-            {details.min_height} - {details.max_height}
+            Range of Height: {details.min_height} - {details.max_height}
           </p>
         </div>
         <div>
           <p>
-            {details.min_weight} - {details.max_weight}
+            Range of Weights: {details.min_weight} - {details.max_weight}
           </p>
         </div>
 
         <div>
-          <p>{`${details.Temperaments},`}</p>
+          <p>Temperaments: {`${details.Temperaments},`}</p>
         </div>
-
         <div>
-          <p>{details.lifespan}</p>
+          <p>Breed group: {details.breed_group}</p>
+        </div>
+        <div>
+          <p>Bred for: {details.bred_for}</p>
+        </div>
+        <div>
+          <p>Lifespan: {details.lifespan}</p>
         </div>
       </div>
     </div>

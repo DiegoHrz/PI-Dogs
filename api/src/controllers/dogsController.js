@@ -55,9 +55,9 @@ const getAllBreeds = async (name) => {
         min_height: +min_height || min_height,
         max_height: +max_height || max_height,
         Temperaments: temperamentsArray,
-        bred_for: dog.bred_for,
-        breed_group: dog.breed_group,
-        lifespan: dog.life_span,
+        bred_for: dog.bred_for || "none",
+        breed_group: dog.breed_group || "none",
+        lifespan: dog.life_span || "none",
       };
     });
 
@@ -68,6 +68,7 @@ const getAllBreeds = async (name) => {
   const breedsApi = await allBreedsApi();
   const allBreeds = [...breedsDb, ...breedsApi];
 
+  //query get dogs name (breed)
   if (name) {
     const breedsFound = allBreeds.filter(
       (dog) => dog.name.toLowerCase() === name.toLowerCase()
@@ -83,13 +84,22 @@ const getAllBreeds = async (name) => {
 
 //get dogs idRaza
 const getBreedId = async (id) => {
-  const allDoggiesDbAndApi = await getAllBreeds();
-
-  const foundBreed = allDoggiesDbAndApi.find((doggie) => doggie.id === +id);
-  return foundBreed;
+  if (isNaN(id)) {
+    const foundBreed = await Dog.findByPk(id);
+    return foundBreed;
+  } else {
+    const allDoggiesDbAndApi = await getAllBreeds();
+    const foundBreed = allDoggiesDbAndApi.find((doggie) => doggie.id === +id);
+    return foundBreed
+  }
 };
 
-//get dogs name
+const gtBreedId = async (id) => {
+  const { data } = await axios.get(`${API_URL}?api_key=${API_KEY}`);
+
+  const foundBreed = data.find((dog) => dog.id === +id);
+  return foundBreed;
+};
 
 //post dogs
 const createDogs = async (
