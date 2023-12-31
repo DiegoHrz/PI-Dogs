@@ -33,22 +33,26 @@
   justify-content: center;
   align-items: flex-start;
   padding: 0 20px;
-  min-height: 120px;
+  min-height: 160px;
   background-color: black;
   color: #fff;
+  overflow: hidden;
 }
 
 .card-body h3 {
-  margin: 0 0 15px 0;
+  margin-top: 10px;
+  margin-bottom: 40px;
   display: flex;
   justify-content: center;
 }
-.card-body p {
-  font-family:Arial, Helvetica, sans-serif;
+.card-body-text {
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: 100;
   font-size: 13px;
   margin: 0 0 15px 0px;
+  max-width: 250px;
   color: #ffffff;
+  display: flex;
 }
 
 .card-footer {
@@ -67,8 +71,8 @@
   text-transform: uppercase;
 }
 
-.invisible-tag{
-    color: transparent
+.invisible-tag {
+  color: transparent;
 }
 
 .link-tag {

@@ -13,8 +13,10 @@ const Card = ({ info }) => {
           </div>
           <div className="card-body">
             <h3>{info.name}</h3>
+            <div className="card-body-text">
+            {`${info.Temperaments.join(', ')}`}
 
-            <p>{`${info.Temperaments}`}</p>
+            </div>
           </div>
           <div className="card-footer">
             Weight: {info.min_weight} - {info.max_weight}
