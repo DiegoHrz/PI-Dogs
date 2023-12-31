@@ -40,14 +40,11 @@ const getAllBreeds = async (name) => {
     const allBreedsApiMap = await data.map((dog) => {
       let [min_weight, max_weight] = dog.weight.metric.split("-");
       let [min_height, max_height] = dog.height.metric.split("-");
+
+      //hay perros en el api que no tienen la propiedad temperament id261
       let temperamentsArray = dog.hasOwnProperty("temperament")
         ? dog.temperament.split(/\s*(?:,|$)\s*/)
         : "";
-
-      //peso max_weight imperial
-      //height min_height imperial
-      //height min_height imperial
-      //pasar temperamentos de array a []
 
       return {
         id: dog.id,
