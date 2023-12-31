@@ -60,7 +60,7 @@ const getAllBreeds = async (name) => {
         Temperaments: temperamentsArray,
         bred_for: dog.bred_for,
         breed_group: dog.breed_group,
-        life_span: dog.life_span
+        lifespan: dog.life_span
       };
     });
 
