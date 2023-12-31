@@ -38,9 +38,11 @@ const getAllBreeds = async (name) => {
     const { data } = await axios.get(`${API_URL}?api_key=${API_KEY}`);
 
     const allBreedsApiMap = await data.map((dog) => {
-
-      let [min_weight, max_weight] = dog.weight.metric.split("-")
-      let [min_height, max_height] = dog.height.metric.split("-")
+      let [min_weight, max_weight] = dog.weight.metric.split("-");
+      let [min_height, max_height] = dog.height.metric.split("-");
+      let temperamentsArray = dog.hasOwnProperty("temperament")
+        ? dog.temperament.split(/\s*(?:,|$)\s*/)
+        : "";
 
       //peso max_weight imperial
       //height min_height imperial
@@ -51,13 +53,14 @@ const getAllBreeds = async (name) => {
         id: dog.id,
         name: dog.name,
         image: dog.image.url,
-        min_weight: +min_weight,
-        max_weight: +max_weight,
-        min_height: +min_height,
-        max_height: +max_height,
-        Temperaments: dog.temperament,
+        min_weight: +min_weight || min_weight,
+        max_weight: +max_weight || max_weight,
+        min_height: +min_height || min_height,
+        max_height: +max_height || max_height,
+        Temperaments: temperamentsArray,
         bred_for: dog.bred_for,
         breed_group: dog.breed_group,
+        life_span: dog.life_span
       };
     });
 
