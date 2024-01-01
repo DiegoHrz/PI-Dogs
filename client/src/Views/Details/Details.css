@@ -1,0 +1,42 @@
+.details-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 200px;
+}
+
+.details-title {
+  border: 3px solid brown;
+}
+
+.details-body {
+  display: flex;
+  justify-content: center;
+}
+
+.details-image-container {
+  min-width: 85vh;
+  width: 85vh;
+  min-height: 60vh;
+  height: 60vh;
+  border: 3px solid brown;
+}
+.details-card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid brown;
+
+  width: 85vh;
+  min-width: 85vh;
+  min-height: 60vh;
+  height: 60vh;
+}
+
+.details-image {
+  
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+

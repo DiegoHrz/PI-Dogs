@@ -51,6 +51,7 @@ const Home = () => {
           <h2>TUS PERROS FAVORITOS</h2>
         </div>
         <div className="home-body-logic-container">
+
           <div className="ordenamientos-logic-container">
             <div>Ordenamientos</div>
             <div>
@@ -90,7 +91,66 @@ const Home = () => {
               </div>
             </div>
           </div>
+
+
+
+          <div className="ordenamientos-logic-container">
+            <div>Filtrados</div>
+            <div>
+              <div>
+                <label htmlFor=""></label>
+                <button
+                  className="home-button-logic"
+                  name="AZ"
+                  onClick={orderAZ}
+                >
+                  API
+                </button>
+                <button
+                  className="home-button-logic"
+                  name="ZA"
+                  onClick={orderAZ}
+                >
+                  DB
+                </button>
+              </div>
+              <div>
+                <label htmlFor=""></label>
+                <button
+                  className="home-button-logic"
+                  name="AZ"
+                  onClick={orderAZ}
+                >
+                  KG↑
+                </button>
+                <button
+                  className="home-button-logic"
+                  name="ZA"
+                  onClick={orderAZ}
+                >
+                  KG↓
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+
+          
+
+
           <div>
+            <Searchbar />
+          </div>
+
+        </div>
+
+
+        <Cards />
+
+
+        {/* //PAGINADO */}
+        <div>
             <label htmlFor="">Paginado </label>
             <button
               className="home-button-logic"
@@ -107,11 +167,8 @@ const Home = () => {
               ᐓ
             </button>
           </div>
-          <div>
-            <Searchbar />
-          </div>
-        </div>
-        <Cards />
+
+
       </div>
     </div>
   );
