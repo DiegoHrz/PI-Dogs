@@ -14,7 +14,7 @@ const Card = ({ info }) => {
           <div className="card-body">
             <h3>{info.name}</h3>
             <div className="card-body-text">
-            {`${info.Temperaments.join(', ')}`}
+              {info.Temperaments? `${info.Temperaments.join(', ')}` : ''}
 
             </div>
           </div>

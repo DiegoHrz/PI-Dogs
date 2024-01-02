@@ -1,6 +1,6 @@
 import axios from "axios";
 import {
-  ALPHABETIC_SORT,
+  SORT_AND_FILTER,
   CLEAR_DETAILS,
   GET_DETAILS,
   GET_DOGS,
@@ -52,7 +52,7 @@ export function searchDog(dog) {
       });
       console.log(res);
     } catch (error) {
-      alert('Ingresar una raza de perros correcta')
+      alert("Ingresar una raza de perros correcta");
       return { error: error.message };
     }
   };
@@ -116,16 +116,15 @@ export function page(order) {
   };
 }
 
-export function dogsAlphabeticSortAZ(orderAZ) {
+export function dogsSortFilter(order) {
   return function (dispatch) {
     try {
       dispatch({
-        type: ALPHABETIC_SORT,
-        payload: orderAZ,
+        type: SORT_AND_FILTER,
+        payload: order,
       });
     } catch (error) {
       return { error: error.message };
     }
   };
 }
-

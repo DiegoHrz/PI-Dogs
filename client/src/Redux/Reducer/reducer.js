@@ -6,7 +6,7 @@ import {
   GET_DETAILS,
   CLEAR_DETAILS,
   PAGINADO,
-  ALPHABETIC_SORT,
+  SORT_AND_FILTER,
 } from "../Action/action-type";
 
 //definir el initial state
@@ -71,38 +71,89 @@ function rootReducer(state = initialState, action) {
         currentPage: action.payload === "next" ? nextPage : prevPage,
       };
 
-    case ALPHABETIC_SORT:
+    case SORT_AND_FILTER:
       switch (action.payload) {
         case "AZ":
-
-        let variableAscendente = [...state.dogsBackup].sort((prev, next)=>{
-          if(prev.name.toLowerCase() > next.name.toLowerCase()) return 1
-          if(prev.name.toLowerCase() < next.name.toLowerCase()) return -1
-          return 0
-        })
-        return {
-          ...state,
-          dogs: [...variableAscendente].splice(0, ITEMS_PER_PAGE),
-          dogsBackup: variableAscendente,
-          currentPage: 0
-        }
+          let variableAscendente = [...state.dogsBackup].sort((prev, next) => {
+            if (prev.name.toLowerCase() > next.name.toLowerCase()) return 1;
+            if (prev.name.toLowerCase() < next.name.toLowerCase()) return -1;
+            return 0;
+          });
+          return {
+            ...state,
+            dogs: [...variableAscendente].splice(0, ITEMS_PER_PAGE),
+            dogsBackup: variableAscendente,
+            currentPage: 0,
+          };
 
         case "ZA":
-          let variableDescendente = [...state.dogsBackup].sort((prev, next)=>{
-            if(prev.name.toLowerCase() > next.name.toLowerCase()) return -1
-            if(prev.name.toLowerCase() < next.name.toLowerCase()) return 1
-            return 0
-          })
+          let variableDescendente = [...state.dogsBackup].sort((prev, next) => {
+            if (prev.name.toLowerCase() > next.name.toLowerCase()) return -1;
+            if (prev.name.toLowerCase() < next.name.toLowerCase()) return 1;
+            return 0;
+          });
           return {
             ...state,
             dogs: [...variableDescendente].splice(0, ITEMS_PER_PAGE),
             dogsBackup: variableDescendente,
-            currentPage: 0
-          }
+            currentPage: 0,
+          };
 
+        case "KG↑":
+          let kgAscendente = [...state.dogsBackup].sort((prev, next) => {
+            const prevWeight = isNaN(prev.min_weight) ? 0 : prev.min_weight;
+            const nextWeight = isNaN(next.min_weight) ? 0 : next.min_weight;
+
+            if (prevWeight > nextWeight) return -1;
+            if (prevWeight < nextWeight) return 1;
+            return 0;
+          });
+          return {
+            ...state,
+            dogs: [...kgAscendente].splice(0, ITEMS_PER_PAGE),
+            dogsBackup: kgAscendente,
+            currentPage: 0,
+          };
+
+        case "KG↓":
+          let kgDescendente = [...state.dogsBackup].sort((prev, next) => {
+            const prevWeight = isNaN(prev.min_weight) ? 0 : prev.min_weight;
+            const nextWeight = isNaN(next.min_weight) ? 0 : next.min_weight;
+
+            if (prevWeight < nextWeight) return -1;
+            if (prevWeight > nextWeight) return 1;
+            return 0;
+          });
+          return {
+            ...state,
+            dogs: [...kgDescendente].splice(0, ITEMS_PER_PAGE),
+            dogsBackup: kgDescendente,
+            currentPage: 0,
+          };
+
+        case "API":
+          let apiFilter = [...state.dogsBackup].filter(
+            (dog) => !dog.hasOwnProperty("origin")
+          );
+          return {
+            ...state,
+            dogs: [...apiFilter].splice(0, ITEMS_PER_PAGE),
+            dogsBackup: apiFilter,
+            currentPage: 0,
+          };
+
+        case "DB":
+          let dbFilter = [...state.dogsBackup].filter((dog) =>
+            dog.hasOwnProperty("origin")
+          );
+          return {
+            ...state,
+            dogs: [...dbFilter].splice(0, ITEMS_PER_PAGE),
+            dogsBackup: dbFilter,
+            currentPage: 0,
+          };
         default:
-          return state
-
+          return state;
       }
 
     default:

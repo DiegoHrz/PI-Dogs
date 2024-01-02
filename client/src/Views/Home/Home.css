@@ -7,11 +7,9 @@
     url("./harris blackford hill (banner).jpg");
   height: 1px;
   margin-top: -520px;
-  margin-bottom: 0px;
   padding: 300px 0px 700px 0;
   background-color: black;
   text-shadow: 0 0 120px rgba(225, 34, 34, 0.7);
-
 }
 .home-header-container-no-image {
   padding-top: 250px;
@@ -49,8 +47,7 @@
   }
 }
 
-
-.buttom-create {
+.button-create {
   height: 50px;
   width: 170px;
   border-radius: 6px;
@@ -61,13 +58,18 @@
   font-weight: 550;
   animation: pulse 3s ease-in-out infinite;
 }
-.home-button-perro{
+
+.button-create:hover{
+  cursor: pointer;
+}
+
+.home-button-perro {
   font-size: 25px;
 }
 
 .home-body-container {
   background-color: black;
-  margin-top: -60px;
+  margin: -60px 0 0px 0;
 }
 
 .home-h1 {
@@ -83,15 +85,14 @@
   margin: 0px 0px 20px 20px;
 }
 
-.ordenamientos-logic-container{
+.ordenamientos-logic-container {
   display: flex;
-  
 }
 
 .home-body-logic-container {
   display: flex;
   justify-content: space-between;
-  margin: -10px 100px 22px 100px;
+  margin: -10px 100px 40px 100px;
 }
 
 .home-button-logic {
@@ -100,3 +101,26 @@
   border: none;
   background-color: rgb(255, 255, 255);
 }
+
+.home-button-logic:hover{
+  cursor: pointer;
+}
+
+.reset-button{
+  background-color: red;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.reset-button:hover{
+  background-color: red;
+  animation: rotation 1s infinite linear;
+}
+

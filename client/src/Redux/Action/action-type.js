@@ -4,4 +4,4 @@ export const GET_DOGS = "GET_DOGS";
 export const GET_DETAILS = "GET_DETAILS";
 export const CLEAR_DETAILS = "CLEAR_DETAILS";
 export const PAGINADO = "PAGINADO";
-export const ALPHABETIC_SORT = "ALPHABETIC_SORT";
+export const SORT_AND_FILTER = "SORT_AND_FILTER";

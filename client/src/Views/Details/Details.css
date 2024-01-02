@@ -20,6 +20,10 @@
   height: 60vh;
   border: 3px solid brown;
 }
+.details-image-container img{
+  object-fit: cover;
+  object-position: top;
+}
 .details-card-container {
   display: flex;
   flex-direction: column;

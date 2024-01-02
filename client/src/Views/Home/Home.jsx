@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Cards from "../../Components/Cards/Cards";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { dogsAlphabeticSortAZ, getDogs, page } from "../../Redux/Action/action";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getDogs,
+  page,
+  getTemperaments,
+  dogsSortFilter,
+} from "../../Redux/Action/action";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import "./Home.css";
 
 import Searchbar from "../../Components/Searchbar/Searchbar";
 
 const Home = () => {
+  const allTemperaments = useSelector((state) => state.temperaments);
+  console.log(allTemperaments);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getDogs());
+  }, []);
+
+  useEffect(() => {
+    dispatch(getTemperaments());
   }, []);
 
   const paginado = (event) => {
@@ -20,8 +30,8 @@ const Home = () => {
     console.log(event.target.name);
   };
 
-  const orderAZ = (event) => {
-    dispatch(dogsAlphabeticSortAZ(event.target.name));
+  const orderAndFilter = (event) => {
+    dispatch(dogsSortFilter(event.target.name));
   };
 
   return (
@@ -38,7 +48,7 @@ const Home = () => {
           </div>
           <div className="home-Link-container">
             <Link to={"/create"}>
-              <button className="buttom-create">
+              <button className="button-create">
                 Crea tu <span className="home-button-perro">🐕</span>{" "}
               </button>
             </Link>
@@ -51,7 +61,6 @@ const Home = () => {
           <h2>TUS PERROS FAVORITOS</h2>
         </div>
         <div className="home-body-logic-container">
-
           <div className="ordenamientos-logic-container">
             <div>Ordenamientos</div>
             <div>
@@ -60,14 +69,14 @@ const Home = () => {
                 <button
                   className="home-button-logic"
                   name="AZ"
-                  onClick={orderAZ}
+                  onClick={orderAndFilter}
                 >
                   AZ↑
                 </button>
                 <button
                   className="home-button-logic"
                   name="ZA"
-                  onClick={orderAZ}
+                  onClick={orderAndFilter}
                 >
                   ZA↓
                 </button>
@@ -76,23 +85,21 @@ const Home = () => {
                 <label htmlFor=""></label>
                 <button
                   className="home-button-logic"
-                  name="AZ"
-                  onClick={orderAZ}
+                  name="KG↑"
+                  onClick={orderAndFilter}
                 >
-                  KG↑
+                  KG+
                 </button>
                 <button
                   className="home-button-logic"
-                  name="ZA"
-                  onClick={orderAZ}
+                  name="KG↓"
+                  onClick={orderAndFilter}
                 >
-                  KG↓
+                  KG-
                 </button>
               </div>
             </div>
           </div>
-
-
 
           <div className="ordenamientos-logic-container">
             <div>Filtrados</div>
@@ -101,74 +108,70 @@ const Home = () => {
                 <label htmlFor=""></label>
                 <button
                   className="home-button-logic"
-                  name="AZ"
-                  onClick={orderAZ}
+                  name="API"
+                  onClick={orderAndFilter}
                 >
                   API
                 </button>
                 <button
                   className="home-button-logic"
-                  name="ZA"
-                  onClick={orderAZ}
+                  name="DB"
+                  onClick={orderAndFilter}
                 >
                   DB
-                </button>
-              </div>
-              <div>
-                <label htmlFor=""></label>
-                <button
-                  className="home-button-logic"
-                  name="AZ"
-                  onClick={orderAZ}
-                >
-                  KG↑
-                </button>
-                <button
-                  className="home-button-logic"
-                  name="ZA"
-                  onClick={orderAZ}
-                >
-                  KG↓
                 </button>
               </div>
             </div>
           </div>
 
+          <div className="ordenamientos-logic-container">
+            <div>Reset</div>
+            <div>
+              <div>
+                <label htmlFor=""></label>
+                <button className="home-button-logic reset-button" name="reset" onClick={""}>
+                  ♻
+                </button>
+              </div>
+            </div>
+          </div>
 
-
-          
-
+          <div className="ordenamientos-logic-container">
+            <div>Filtra por Temperamento </div>
+            <div>
+              <div>
+                <label htmlFor=""></label>
+                <select name="temperaments" className="home-button-logic" id="">
+                  <option value="Selecciona" hidden>
+                    Selecciona
+                  </option>
+                  {allTemperaments.map((tem) => (
+                    <option key={tem} value={tem}>
+                      {tem}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
 
           <div>
             <Searchbar />
           </div>
-
         </div>
-
-
-        <Cards />
-
 
         {/* //PAGINADO */}
         <div>
-            <label htmlFor="">Paginado </label>
-            <button
-              className="home-button-logic"
-              name="prev"
-              onClick={paginado}
-            >
-              ᐗ
-            </button>
-            <button
-              className="home-button-logic"
-              name="next"
-              onClick={paginado}
-            >
-              ᐓ
-            </button>
-          </div>
+          <label htmlFor="">Paginado </label>
+          <button className="home-button-logic" name="prev" onClick={paginado}>
+            ᐗ
+          </button>
+          <button className="home-button-logic" name="next" onClick={paginado}>
+            ᐓ
+          </button>
+        </div>
 
-
+        <Cards />
       </div>
     </div>
   );

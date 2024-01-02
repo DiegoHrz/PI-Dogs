@@ -21,8 +21,8 @@ const Searchbar = () => {
   return (
     <div>
       <form action="" onSubmit={handleSubmit}>
-        Busca tu perro{" "}
-        <input id="search-bar" type="text" onChange={handleChange} className="searchbar-input" />
+        Busca tu Perro{" "}
+        <input id="search-bar" type="text" onChange={handleChange} className="searchbar-input" placeholder="  Por Raza" />
         <input type="submit" value="🔎" className="searchbar-button"/>
       </form>
     </div>
