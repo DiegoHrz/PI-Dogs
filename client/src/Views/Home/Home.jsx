@@ -7,6 +7,7 @@ import {
   getTemperaments,
   dogsSortFilter,
   resetDogs,
+  filtersByTemperaments,
 } from "../../Redux/Action/action";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import "./Home.css";
@@ -39,6 +40,11 @@ const Home = () => {
     dispatch(resetDogs())
   }
 
+  const handleChangeTemperaments = (event) =>{
+    dispatch(filtersByTemperaments(event.target.value))
+
+  }
+
   return (
     <div className="home-container">
       <div className="home-header-container">
@@ -69,6 +75,8 @@ const Home = () => {
           <div className="ordenamientos-logic-container">
             <div>Ordenamientos</div>
             <div>
+
+
               <div>
                 <label htmlFor=""></label>
                 <button
@@ -86,6 +94,8 @@ const Home = () => {
                   ZA↓
                 </button>
               </div>
+
+
               <div>
                 <label htmlFor=""></label>
                 <button
@@ -105,6 +115,7 @@ const Home = () => {
               </div>
             </div>
           </div>
+
 
           <div className="ordenamientos-logic-container">
             <div>Filtrados</div>
@@ -130,13 +141,12 @@ const Home = () => {
           </div>
 
 
-
           <div className="ordenamientos-logic-container">
             <div>Filtra por Temperamento </div>
             <div>
               <div>
                 <label htmlFor=""></label>
-                <select name="temperaments" className="home-button-logic" id="">
+                <select name="temperaments" onChange={handleChangeTemperaments} className="home-button-logic" id="">
                   <option value="Selecciona" hidden>
                     Selecciona
                   </option>
@@ -151,14 +161,8 @@ const Home = () => {
           </div>
 
 
-
-          <div>
-            <Searchbar />
-          </div>
-
-
           <div className="ordenamientos-logic-container">
-            <div>Reset</div>
+            <div>Reset Filtros</div>
             <div>
               <div>
                 <label htmlFor=""></label>
@@ -168,6 +172,12 @@ const Home = () => {
               </div>
             </div>
           </div>
+
+
+          <div>
+            <Searchbar />
+          </div>
+
 
         </div>
 

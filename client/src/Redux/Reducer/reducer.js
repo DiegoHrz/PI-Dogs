@@ -8,6 +8,7 @@ import {
   PAGINADO,
   SORT_AND_FILTER,
   RESET,
+  FILTER_BY_TEMPERAMENT,
 } from "../Action/action-type";
 
 //definir el initial state
@@ -91,64 +92,132 @@ function rootReducer(state = initialState, action) {
 
     case SORT_AND_FILTER:
       switch (action.payload) {
+        //SORTS
         case "AZ":
-          let variableAscendente = [...state.dogsBackup].sort((prev, next) => {
-            if (prev.name.toLowerCase() > next.name.toLowerCase()) return 1;
-            if (prev.name.toLowerCase() < next.name.toLowerCase()) return -1;
-            return 0;
-          });
-          return {
-            ...state,
-            dogs: [...variableAscendente].splice(0, ITEMS_PER_PAGE),
-            dogsBackup: variableAscendente,
-            currentPage: 0,
-          };
+          let variableAscendente = [];
+          if (state.filters) {
+            variableAscendente = [...state.dogsFiltered].sort((prev, next) => {
+              if (prev.name.toLowerCase() > next.name.toLowerCase()) return 1;
+              if (prev.name.toLowerCase() < next.name.toLowerCase()) return -1;
+              return 0;
+            });
+            return {
+              ...state,
+              dogs: [...variableAscendente].splice(0, ITEMS_PER_PAGE),
+              dogsFiltered: variableAscendente,
+              currentPage: 0,
+            };
+          } else {
+            variableAscendente = [...state.dogsBackup].sort((prev, next) => {
+              if (prev.name.toLowerCase() > next.name.toLowerCase()) return 1;
+              if (prev.name.toLowerCase() < next.name.toLowerCase()) return -1;
+              return 0;
+            });
+            return {
+              ...state,
+              dogs: [...variableAscendente].splice(0, ITEMS_PER_PAGE),
+              dogsBackup: variableAscendente,
+              currentPage: 0,
+            };
+          }
 
         case "ZA":
-          let variableDescendente = [...state.dogsBackup].sort((prev, next) => {
-            if (prev.name.toLowerCase() > next.name.toLowerCase()) return -1;
-            if (prev.name.toLowerCase() < next.name.toLowerCase()) return 1;
-            return 0;
-          });
-          return {
-            ...state,
-            dogs: [...variableDescendente].splice(0, ITEMS_PER_PAGE),
-            dogsBackup: variableDescendente,
-            currentPage: 0,
-          };
+          let variableDescendente = [];
+          if (state.filters) {
+            variableDescendente = [...state.dogsFiltered].sort((prev, next) => {
+              if (prev.name.toLowerCase() > next.name.toLowerCase()) return -1;
+              if (prev.name.toLowerCase() < next.name.toLowerCase()) return 1;
+              return 0;
+            });
+            return {
+              ...state,
+              dogs: [...variableDescendente].splice(0, ITEMS_PER_PAGE),
+              dogsFiltered: variableDescendente,
+              currentPage: 0,
+            };
+          } else {
+            variableDescendente = [...state.dogsBackup].sort((prev, next) => {
+              if (prev.name.toLowerCase() > next.name.toLowerCase()) return -1;
+              if (prev.name.toLowerCase() < next.name.toLowerCase()) return 1;
+              return 0;
+            });
+            return {
+              ...state,
+              dogs: [...variableDescendente].splice(0, ITEMS_PER_PAGE),
+              dogsBackup: variableDescendente,
+              currentPage: 0,
+            };
+          }
 
         case "KG↑":
-          let kgAscendente = [...state.dogsBackup].sort((prev, next) => {
-            const prevWeight = isNaN(prev.min_weight) ? 0 : prev.min_weight;
-            const nextWeight = isNaN(next.min_weight) ? 0 : next.min_weight;
+          let kgAscendente = [];
+          if (state.filters) {
+            kgAscendente = [...state.dogsFiltered].sort((prev, next) => {
+              const prevWeight = isNaN(prev.min_weight) ? 0 : prev.min_weight;
+              const nextWeight = isNaN(next.min_weight) ? 0 : next.min_weight;
 
-            if (prevWeight > nextWeight) return -1;
-            if (prevWeight < nextWeight) return 1;
-            return 0;
-          });
-          return {
-            ...state,
-            dogs: [...kgAscendente].splice(0, ITEMS_PER_PAGE),
-            dogsBackup: kgAscendente,
-            currentPage: 0,
-          };
+              if (prevWeight > nextWeight) return -1;
+              if (prevWeight < nextWeight) return 1;
+              return 0;
+            });
+            return {
+              ...state,
+              dogs: [...kgAscendente].splice(0, ITEMS_PER_PAGE),
+              dogsFiltered: kgAscendente,
+              currentPage: 0,
+            };
+          } else {
+            kgAscendente = [...state.dogsBackup].sort((prev, next) => {
+              const prevWeight = isNaN(prev.min_weight) ? 0 : prev.min_weight;
+              const nextWeight = isNaN(next.min_weight) ? 0 : next.min_weight;
+
+              if (prevWeight > nextWeight) return -1;
+              if (prevWeight < nextWeight) return 1;
+              return 0;
+            });
+            return {
+              ...state,
+              dogs: [...kgAscendente].splice(0, ITEMS_PER_PAGE),
+              dogsBackup: kgAscendente,
+              currentPage: 0,
+            };
+          }
 
         case "KG↓":
-          let kgDescendente = [...state.dogsBackup].sort((prev, next) => {
-            const prevWeight = isNaN(prev.min_weight) ? 0 : prev.min_weight;
-            const nextWeight = isNaN(next.min_weight) ? 0 : next.min_weight;
+          let kgDescendente = [];
+          if (state.filters) {
+            kgDescendente = [...state.dogsFiltered].sort((prev, next) => {
+              const prevWeight = isNaN(prev.min_weight) ? 0 : prev.min_weight;
+              const nextWeight = isNaN(next.min_weight) ? 0 : next.min_weight;
 
-            if (prevWeight < nextWeight) return -1;
-            if (prevWeight > nextWeight) return 1;
-            return 0;
-          });
-          return {
-            ...state,
-            dogs: [...kgDescendente].splice(0, ITEMS_PER_PAGE),
-            dogsBackup: kgDescendente,
-            currentPage: 0,
-          };
+              if (prevWeight < nextWeight) return -1;
+              if (prevWeight > nextWeight) return 1;
+              return 0;
+            });
+            return {
+              ...state,
+              dogs: [...kgDescendente].splice(0, ITEMS_PER_PAGE),
+              dogsFiltered: kgDescendente,
+              currentPage: 0,
+            };
+          } else {
+            kgDescendente = [...state.dogsBackup].sort((prev, next) => {
+              const prevWeight = isNaN(prev.min_weight) ? 0 : prev.min_weight;
+              const nextWeight = isNaN(next.min_weight) ? 0 : next.min_weight;
 
+              if (prevWeight < nextWeight) return -1;
+              if (prevWeight > nextWeight) return 1;
+              return 0;
+            });
+            return {
+              ...state,
+              dogs: [...kgDescendente].splice(0, ITEMS_PER_PAGE),
+              dogsBackup: kgDescendente,
+              currentPage: 0,
+            };
+          }
+
+        //FILTERS
         case "API":
           let apiFilter = [...state.dogsBackup].filter(
             (dog) => !dog.hasOwnProperty("origin")
@@ -183,6 +252,26 @@ function rootReducer(state = initialState, action) {
         dogsFiltered: [],
         currentPage: 0,
         filters: false,
+      };
+
+    case FILTER_BY_TEMPERAMENT:
+    case "temperaments":
+      let filterByTemperament = [...state.dogsBackup].filter((dog) =>
+        dog.Temperaments.includes(action.payload)
+      );
+      return {
+        ...state,
+        dogs: [...filterByTemperament].splice(0, ITEMS_PER_PAGE),
+        dogsFiltered: filterByTemperament,
+        filters: true,
+        currentPage: 0,
+      };
+
+      // case GET_DOGS:
+      return {
+        ...state,
+        dogs: [...action.payload].splice(0, ITEMS_PER_PAGE),
+        dogsBackup: action.payload,
       };
 
     default:

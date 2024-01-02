@@ -8,6 +8,7 @@ import {
   PAGINADO,
   SEARCH_DOG,
   RESET,
+  FILTER_BY_TEMPERAMENT,
 } from "./action-type";
 
 export function createDogs(state) {
@@ -139,5 +140,14 @@ export function resetDogs(){
     } catch (error) {
       return {error: error.message}
     }
+  }
+}
+
+export function filtersByTemperaments(selectedTemperament){
+  return function (dispatch){
+    dispatch({
+      type:FILTER_BY_TEMPERAMENT,
+      payload: selectedTemperament
+    })
   }
 }

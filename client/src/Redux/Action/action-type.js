@@ -6,3 +6,4 @@ export const CLEAR_DETAILS = "CLEAR_DETAILS";
 export const PAGINADO = "PAGINADO";
 export const SORT_AND_FILTER = "SORT_AND_FILTER";
 export const RESET = "RESET";
+export const FILTER_BY_TEMPERAMENT = 'FILTER_BY_TEMPERAMENT'
