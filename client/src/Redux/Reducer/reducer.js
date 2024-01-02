@@ -15,6 +15,8 @@ let initialState = {
   dogs: [], // dogs = dogs breed
   dogsBackup: [],
   details: {},
+  dogsFiltered: [],
+  filters: false,
   currentPage: 0,
 };
 
@@ -62,9 +64,24 @@ function rootReducer(state = initialState, action) {
           ? nextPage * ITEMS_PER_PAGE
           : prevPage * ITEMS_PER_PAGE;
 
+      if (state.filters) {
+        if (
+          action.payload === "next" &&
+          firstIndex >= state.dogsFiltered.length
+        )
+          return state;
+        else if (action.payload === "prev" && prevPage < 0) return state;
+        return {
+          ...state,
+          dogs: [...state.dogsFiltered].splice(firstIndex, ITEMS_PER_PAGE), //desde mi 1stIndex quiero que me renderices la cantidad de items que te paso por pagina
+          currentPage: action.payload === "next" ? nextPage : prevPage,
+        };
+      }
+
       if (action.payload === "next" && firstIndex >= state.dogsBackup.length)
         return state;
       else if (action.payload === "prev" && prevPage < 0) return state;
+
       return {
         ...state,
         dogs: [...state.dogsBackup].splice(firstIndex, ITEMS_PER_PAGE), //desde mi 1stIndex quiero que me renderices la cantidad de items que te paso por pagina
@@ -138,8 +155,9 @@ function rootReducer(state = initialState, action) {
           return {
             ...state,
             dogs: [...apiFilter].splice(0, ITEMS_PER_PAGE),
-            dogsBackup: apiFilter,
+            dogsFiltered: apiFilter,
             currentPage: 0,
+            filters: true,
           };
 
         case "DB":
@@ -149,8 +167,9 @@ function rootReducer(state = initialState, action) {
           return {
             ...state,
             dogs: [...dbFilter].splice(0, ITEMS_PER_PAGE),
-            dogsBackup: dbFilter,
+            dogsFiltered: dbFilter,
             currentPage: 0,
+            filters: true,
           };
         default:
           return state;
