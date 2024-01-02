@@ -71,15 +71,24 @@ const getAllBreeds = async (name) => {
 
   //query get dogs name (breed)
   if (name) {
-    const breedsFound = allBreeds.filter(
-      (dog) => dog.name.toLowerCase() === name.toLowerCase()
-    );
-
+    const lowerCaseName = name.toLowerCase();
+  
+    const breedsFound = allBreeds.filter((dog) => {
+      const dogName = dog.name.toLowerCase();
+      const wordsInDogName = dogName.split(' ');  // Verificar palabra
+      if (wordsInDogName.includes(lowerCaseName)) {
+        return true;
+      }
+      return false;
+    });
+  
     if (!breedsFound.length) {
-      throw new Error(`No se encontraron razas con el name:${name}`);
+      throw new Error(`No se encontraron razas con el name: ${name}`);
     }
+  
     return breedsFound;
   }
+  
   return allBreeds;
 };
 
