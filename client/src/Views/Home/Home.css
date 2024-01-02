@@ -59,8 +59,9 @@
   animation: pulse 3s ease-in-out infinite;
 }
 
-.button-create:hover{
+.button-create:hover {
   cursor: pointer;
+  border: 1px solid white;
 }
 
 .home-button-perro {
@@ -102,12 +103,18 @@
   background-color: rgb(255, 255, 255);
 }
 
-.home-button-logic:hover{
+.home-button-logic:hover {
   cursor: pointer;
 }
 
-.reset-button{
+.reset-button {
   background-color: red;
+  border-radius: 90%;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes rotation {
@@ -119,8 +126,7 @@
   }
 }
 
-.reset-button:hover{
+.reset-button:hover {
   background-color: red;
   animation: rotation 1s infinite linear;
 }
-

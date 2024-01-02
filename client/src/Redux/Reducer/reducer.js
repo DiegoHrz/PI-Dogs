@@ -7,6 +7,7 @@ import {
   CLEAR_DETAILS,
   PAGINADO,
   SORT_AND_FILTER,
+  RESET,
 } from "../Action/action-type";
 
 //definir el initial state
@@ -174,6 +175,15 @@ function rootReducer(state = initialState, action) {
         default:
           return state;
       }
+
+    case RESET:
+      return {
+        ...state,
+        dogs: [...state.dogsBackup].splice(0, ITEMS_PER_PAGE),
+        dogsFiltered: [],
+        currentPage: 0,
+        filters: false,
+      };
 
     default:
       return state;

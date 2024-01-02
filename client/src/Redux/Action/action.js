@@ -7,6 +7,7 @@ import {
   GET_TEMPERAMENTS,
   PAGINADO,
   SEARCH_DOG,
+  RESET,
 } from "./action-type";
 
 export function createDogs(state) {
@@ -127,4 +128,16 @@ export function dogsSortFilter(order) {
       return { error: error.message };
     }
   };
+}
+
+export function resetDogs(){
+  return function (dispatch){
+    try {
+      dispatch({
+        type: RESET
+      })
+    } catch (error) {
+      return {error: error.message}
+    }
+  }
 }

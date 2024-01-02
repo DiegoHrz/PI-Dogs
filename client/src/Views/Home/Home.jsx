@@ -6,6 +6,7 @@ import {
   page,
   getTemperaments,
   dogsSortFilter,
+  resetDogs,
 } from "../../Redux/Action/action";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import "./Home.css";
@@ -33,6 +34,10 @@ const Home = () => {
   const orderAndFilter = (event) => {
     dispatch(dogsSortFilter(event.target.name));
   };
+
+  const reset = () =>{
+    dispatch(resetDogs())
+  }
 
   return (
     <div className="home-container">
@@ -124,17 +129,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="ordenamientos-logic-container">
-            <div>Reset</div>
-            <div>
-              <div>
-                <label htmlFor=""></label>
-                <button className="home-button-logic reset-button" name="reset" onClick={""}>
-                  ♻
-                </button>
-              </div>
-            </div>
-          </div>
+
 
           <div className="ordenamientos-logic-container">
             <div>Filtra por Temperamento </div>
@@ -155,9 +150,25 @@ const Home = () => {
             </div>
           </div>
 
+
+
           <div>
             <Searchbar />
           </div>
+
+
+          <div className="ordenamientos-logic-container">
+            <div>Reset</div>
+            <div>
+              <div>
+                <label htmlFor=""></label>
+                <button className="home-button-logic reset-button" name="reset" onClick={reset}>
+                  ♻
+                </button>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         {/* //PAGINADO */}
