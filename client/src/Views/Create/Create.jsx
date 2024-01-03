@@ -124,6 +124,20 @@ const Create = () => {
         else setErrors({ ...errors, lifespan: "" });
         break;
 
+      case "image":
+        if (state.image === "") {
+          setErrors({ ...errors, image: "" });
+        } else if (!/^(http|https):\/\/.*\.jpg$/i.test(state.image.trim())) {
+          setErrors({
+            ...errors,
+            image:
+              "*La URL de la imagen debe terminar en '.jpg' y comenzar con 'http' o 'https'.*",
+          });
+        } else {
+          setErrors({ ...errors, image: "" });
+        }
+        break;
+
       case "temperaments":
         if (state.temperaments.length === 0) {
           setErrors({ ...errors, temperaments: "*seleccion requerida*" });
@@ -231,6 +245,7 @@ const Create = () => {
           <label htmlFor="" className="form-label">
             Image:
           </label>
+          {errors.image && <span className="errorSpan">{errors.image}</span>}
           <input onChange={handleChange} type="text" name="image" id="" />
 
           <label htmlFor="" className="form-label">
