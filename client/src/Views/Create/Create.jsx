@@ -100,15 +100,15 @@ const Create = () => {
           setErrors({ ...errors, max_weight: "*campo requerido*" });
         else if (isNaN(+state.max_weight))
           setErrors({ ...errors, max_weight: "*Tiene que ser numero*" });
+        else if (state.max_weight > 100)
+          setErrors({ ...errors, max_weight: "*Max 100 kg*" });
+        else if (state.max_weight < 60)
+          setErrors({ ...errors, max_weight: "*Min 60 kg*" });
         else if (state.max_weight < state.min_weight)
           setErrors({
             ...errors,
             max_weight: "*No puede ser menor que el minimo*",
           });
-        else if (state.max_weight > 100)
-          setErrors({ ...errors, max_weight: "*Max 100 kg*" });
-        else if (state.max_weight < 60)
-          setErrors({ ...errors, max_weight: "*Min 60 kg*" });
         else setErrors({ ...errors, max_weight: "" });
         break;
 
