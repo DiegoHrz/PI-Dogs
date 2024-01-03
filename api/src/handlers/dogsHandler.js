@@ -54,7 +54,7 @@ dogsHandler.createDogsHandler = async (req, res) => {
       min_weight,
       max_weight,
       lifespan,
-      image || "https://img.freepik.com/fotos-premium/perro-gracioso-peluca-blanco_392895-8184.jpg",
+      image || "https://images.creativefabrica.com/products/previews/2023/06/02/HMYYv29D8/2QefNo5bZ4K6CUbK7vqZJNS84pT-mobile.jpg",
       temperaments
     );
     //es un 201 porque a parte de que todo este bien se creo algo

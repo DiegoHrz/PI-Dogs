@@ -45,8 +45,12 @@ const Create = () => {
       case "name":
         if (state.name === "")
           setErrors({ ...errors, name: "*campo requerido*" });
-        else if (state.name.length > 20)
-          setErrors({ ...errors, name: "*Máximo 20 caracteres*" });
+        else if (state.name.length > 25)
+          setErrors({ ...errors, name: "*Máximo 25 letras*" });
+        else if (state.name.length < 3)
+          setErrors({ ...errors, name: "*Minimo 3 letras*" });
+        else if (!/^[a-zA-Z\s]+$/.test(state.name))
+          setErrors({ ...errors, name: "*Solo letras *" });
         else setErrors({ ...errors, name: "" });
         break;
 
@@ -55,8 +59,10 @@ const Create = () => {
           setErrors({ ...errors, min_height: "*campo requerido*" });
         else if (isNaN(+state.min_height))
           setErrors({ ...errors, min_height: "*Tiene que ser numero*" });
-        else if (state.min_height < 0.3)
-          setErrors({ ...errors, min_height: "*Min 0.3 metros*" });
+        else if (state.min_height < 20)
+          setErrors({ ...errors, min_height: "*Min 20 cm*" });
+        else if (state.min_height > 50)
+          setErrors({ ...errors, min_height: "*Max 50 cm*" });
         else setErrors({ ...errors, min_height: "" });
         break;
 
@@ -65,8 +71,15 @@ const Create = () => {
           setErrors({ ...errors, max_height: "*campo requerido*" });
         else if (isNaN(+state.max_height))
           setErrors({ ...errors, max_height: "*Tiene que ser numero*" });
-        else if (state.max_height > 20)
-          setErrors({ ...errors, max_height: "*Max 20 metros*" });
+        else if (state.max_height < 20)
+          setErrors({ ...errors, max_height: "*Min 20 metros*" });
+        else if (state.max_height > 80)
+          setErrors({ ...errors, max_height: "*Max 80 cm*" });
+        else if (state.max_height < state.min_height)
+          setErrors({
+            ...errors,
+            max_height: "*No puede ser menor que el minimo*",
+          });
         else setErrors({ ...errors, max_height: "" });
         break;
 
@@ -77,6 +90,8 @@ const Create = () => {
           setErrors({ ...errors, min_weight: "*Tiene que ser numero*" });
         else if (state.min_weight < 1)
           setErrors({ ...errors, min_weight: "*Min 1 kg*" });
+        else if (state.min_weight > 60)
+          setErrors({ ...errors, min_weight: "*Max 60 kg*" });
         else setErrors({ ...errors, min_weight: "" });
         break;
 
@@ -85,8 +100,15 @@ const Create = () => {
           setErrors({ ...errors, max_weight: "*campo requerido*" });
         else if (isNaN(+state.max_weight))
           setErrors({ ...errors, max_weight: "*Tiene que ser numero*" });
+        else if (state.max_weight < state.min_weight)
+          setErrors({
+            ...errors,
+            max_weight: "*No puede ser menor que el minimo*",
+          });
         else if (state.max_weight > 100)
           setErrors({ ...errors, max_weight: "*Max 100 kg*" });
+        else if (state.max_weight < 60)
+          setErrors({ ...errors, max_weight: "*Min 60 kg*" });
         else setErrors({ ...errors, max_weight: "" });
         break;
 
@@ -96,7 +118,9 @@ const Create = () => {
         else if (isNaN(+state.lifespan))
           setErrors({ ...errors, lifespan: "*Tiene que ser numero*" });
         else if (state.lifespan < 1)
-          setErrors({ ...errors, lifespan: "*Min 1 year*" });
+          setErrors({ ...errors, lifespan: "*Min 1 año*" });
+        else if (state.lifespan > 100)
+          setErrors({ ...errors, lifespan: "*Max 100 años*" });
         else setErrors({ ...errors, lifespan: "" });
         break;
 

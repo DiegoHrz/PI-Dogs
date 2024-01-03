@@ -4,7 +4,6 @@ const dogsRoute = Router();
 const dogsHandler = require('../handlers/dogsHandler')
 const {getAllBreedsHandler, getBreedIdHandler, getDogsNameHandler, createDogsHandler} = dogsHandler
 
-//query always go first in the list of routes
 dogsRoute.get("/", getDogsNameHandler );
 
 dogsRoute.get("/", getAllBreedsHandler);
