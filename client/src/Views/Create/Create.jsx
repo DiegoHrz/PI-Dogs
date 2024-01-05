@@ -11,13 +11,9 @@ const Create = () => {
   const allTemperaments = useSelector((state) => state.temperaments);
 
   useEffect(() => {
-    //componentWillUnmount
-    //componentDidMount
     dispatch(getTemperaments());
   }, []);
 
-  //el setState es la funcion que nos permite modificar el estado
-  //dentro del useState se setea el estado inicial del estado state
   const [state, setState] = useState({
     name: "",
     min_height: "",
@@ -157,9 +153,13 @@ const Create = () => {
     return aux;
   };
 
-  //se encarga de modificar el estado actual
   const handleChange = (event) => {
-    //recibe un evento que contenga la info del input que estamos modificando y cual es la info q debo modificar
+    if (
+      event.target.name === "temperaments" &&
+      state.temperaments.length >= 5
+    ) {
+      return;
+    }
 
     if (event.target.name === "temperaments") {
       setState({
@@ -180,10 +180,6 @@ const Create = () => {
       },
       event.target.name
     );
-
-    //al setState se le pasa el nuevo objeto que va a ser el nuevo estado
-    //este nuevo estado recibira una copia del estado anterior (...state) para que el nuevo objeto que creo no pise el estado anterior
-    //Además le concateno la posicion del event.target.name y le doy el valor e.target.value
   };
 
   const handleSubmit = (event) => {
@@ -259,8 +255,15 @@ const Create = () => {
             <option value="Selecciona" hidden>
               Selecciona los Temperamentos
             </option>
-            {allTemperaments.map((temp) => (
-              <option key={temp} value={temp}>
+            {allTemperaments.map((temp, index) => (
+              <option
+                key={index}
+                value={temp}
+                disabled={
+                  state.temperaments.includes(temp) &&
+                  state.temperaments.length >= 5
+                }
+              >
                 {temp}
               </option>
             ))}

@@ -7,9 +7,8 @@ import "./Details.css";
 const Details = () => {
   const dispatch = useDispatch();
 
-  //retornarme dentro de params el id que yo le paso en la ruta
+
   const params = useParams();
-  console.log(params);
 
   const details = useSelector((state) => state.details);
 
@@ -20,7 +19,6 @@ const Details = () => {
     };
   }, [params.id]);
 
-  console.log(details.name);
   return (
     <div className="details-container">
       <div className="details-title">

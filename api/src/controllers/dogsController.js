@@ -3,11 +3,11 @@ const axios = require("axios");
 require("dotenv").config();
 const { API_KEY, API_URL } = process.env;
 
-//const URL = `${apiUrl}/${id}?api_key=${apiKey}`
 
 //get dogs
-// and get dogs name (breed)
+
 const getAllBreeds = async (name) => {
+
   // get dogs breed in the db
   const allBreedsDb = async () => {
     let breedsDb = await Dog.findAll({
@@ -19,10 +19,9 @@ const getAllBreeds = async (name) => {
         },
       },
     });
+
     const modifiedBreeds = breedsDb.map((dog) => {
       const temperamentsNames = dog.Temperaments.map((temp) => temp.name);
-
-      //AL SER DOG una instancia del modelo sequelize .dataValues obtiene un objeto que contiene los valores reales de los campos del modelo, en lugar de toda la instancia del modelo.
 
       return {
         ...dog.dataValues,
@@ -30,7 +29,6 @@ const getAllBreeds = async (name) => {
         origin: "db",
       };
     });
-    console.log(modifiedBreeds);
     return modifiedBreeds;
   };
 
@@ -42,7 +40,6 @@ const getAllBreeds = async (name) => {
       let [min_weight, max_weight] = dog.weight.metric.split("-");
       let [min_height, max_height] = dog.height.metric.split("-");
 
-      //hay perros en el api que no tienen la propiedad temperament id261
       let temperamentsArray = dog.hasOwnProperty("temperament")
         ? dog.temperament.split(/\s*(?:,|$)\s*/)
         : "";
@@ -51,7 +48,7 @@ const getAllBreeds = async (name) => {
         id: dog.id,
         name: dog.name,
         image: dog.image.url,
-        min_weight: +min_weight || min_weight,
+        min_weight: +min_weight || min_weight, // por si es string o num
         max_weight: +max_weight || max_weight,
         min_height: +min_height || min_height,
         max_height: +max_height || max_height,
@@ -75,7 +72,7 @@ const getAllBreeds = async (name) => {
   
     const breedsFound = allBreeds.filter((dog) => {
       const dogName = dog.name.toLowerCase();
-      const wordsInDogName = dogName.split(' ');  // Verificar palabra
+      const wordsInDogName = dogName.split(' ');  
       if (wordsInDogName.includes(lowerCaseName)) {
         return true;
       }
@@ -96,12 +93,12 @@ const getAllBreeds = async (name) => {
 const getBreedId = async (id) => {
   const allDoggiesDbAndApi = await getAllBreeds();
 
-  //Si es numero el id
+  //para num
   if (!isNaN(id)) {
     const foundBreed = allDoggiesDbAndApi.find((doggie) => doggie.id === +id);
     return foundBreed;
   }
-  // de lo contrario es un uuid (string)
+  // y para un uuid (string)
   const foundBreed = allDoggiesDbAndApi.find((doggie) => doggie.id === id);
   return foundBreed;
 };
@@ -129,11 +126,12 @@ const createDogs = async (
   });
   temperaments.forEach(async (tem) => {
     let temperamentsDb = await Temperaments.findAll({ where: { name: tem } });
-    await newDog.addTemperaments(temperamentsDb);
+    await newDog.addTemperaments(temperamentsDb); // mixins
   });
   return newDog;
 };
-//al usar thunder client
-//1ro llamas
+
+
+
 
 module.exports = { getAllBreeds, getBreedId, createDogs };

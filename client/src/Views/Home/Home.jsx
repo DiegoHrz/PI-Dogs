@@ -16,7 +16,6 @@ import Searchbar from "../../Components/Searchbar/Searchbar";
 
 const Home = () => {
   const allTemperaments = useSelector((state) => state.temperaments);
-  console.log(allTemperaments);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,21 +28,21 @@ const Home = () => {
 
   const paginado = (event) => {
     dispatch(page(event.target.name));
-    console.log(event.target.name);
   };
 
   const orderAndFilter = (event) => {
     dispatch(dogsSortFilter(event.target.name));
   };
 
-  const reset = () =>{
-    dispatch(resetDogs())
-  }
+  const reset = () => {
+    dispatch(resetDogs());
+  };
 
-  const handleChangeTemperaments = (event) =>{
-    dispatch(filtersByTemperaments(event.target.value))
+  const handleChangeTemperaments = (event) => {
+    dispatch(filtersByTemperaments(event.target.value));
+  };
 
-  }
+
 
   return (
     <div className="home-container">
@@ -75,8 +74,6 @@ const Home = () => {
           <div className="ordenamientos-logic-container">
             <div>Ordenamientos</div>
             <div>
-
-
               <div>
                 <label htmlFor=""></label>
                 <button
@@ -94,7 +91,6 @@ const Home = () => {
                   ZA↓
                 </button>
               </div>
-
 
               <div>
                 <label htmlFor=""></label>
@@ -115,7 +111,6 @@ const Home = () => {
               </div>
             </div>
           </div>
-
 
           <div className="ordenamientos-logic-container">
             <div>Filtrados</div>
@@ -140,13 +135,17 @@ const Home = () => {
             </div>
           </div>
 
-
           <div className="ordenamientos-logic-container">
             <div>Filtra por Temperamento </div>
             <div>
               <div>
                 <label htmlFor=""></label>
-                <select name="temperaments" onChange={handleChangeTemperaments} className="home-button-logic" id="">
+                <select
+                  name="temperaments"
+                  onChange={handleChangeTemperaments}
+                  className="home-button-logic"
+                  id=""
+                >
                   <option value="Selecciona" hidden>
                     Selecciona
                   </option>
@@ -160,33 +159,34 @@ const Home = () => {
             </div>
           </div>
 
-
           <div className="ordenamientos-logic-container">
             <div>Reset Filtros</div>
             <div>
               <div>
                 <label htmlFor=""></label>
-                <button className="home-button-logic reset-button" name="reset" onClick={reset}>
+                <button
+                  className="home-button-logic reset-button"
+                  name="reset"
+                  onClick={reset}
+                >
                   ♻
                 </button>
               </div>
             </div>
           </div>
 
-
           <div>
             <Searchbar />
           </div>
-
 
         </div>
 
         {/* //PAGINADO */}
         <div>
-          <label htmlFor="">Paginado </label>
+          <label htmlFor=""> </label>
           <button className="home-button-logic" name="prev" onClick={paginado}>
-            ᐗ
-          </button>
+            ᐗ     
+          </button><span>{ }</span>
           <button className="home-button-logic" name="next" onClick={paginado}>
             ᐓ
           </button>

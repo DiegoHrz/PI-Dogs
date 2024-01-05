@@ -1,4 +1,4 @@
-//import action-types
+
 import {
   GET_TEMPERAMENTS,
   SEARCH_DOG,
@@ -11,10 +11,10 @@ import {
   FILTER_BY_TEMPERAMENT,
 } from "../Action/action-type";
 
-//definir el initial state
+
 let initialState = {
   temperaments: [],
-  dogs: [], // dogs = dogs breed
+  dogs: [], // dogs = breed
   dogsBackup: [],
   details: {},
   dogsFiltered: [],
@@ -22,7 +22,7 @@ let initialState = {
   currentPage: 0,
 };
 
-//definir el rootReducer
+
 function rootReducer(state = initialState, action) {
   const ITEMS_PER_PAGE = 8;
 
@@ -43,7 +43,7 @@ function rootReducer(state = initialState, action) {
     case SEARCH_DOG:
       return {
         ...state,
-        dogs: action.payload, // dogs = dogs breed
+        dogs: action.payload, 
       };
 
     case GET_DETAILS:
@@ -75,7 +75,7 @@ function rootReducer(state = initialState, action) {
         else if (action.payload === "prev" && prevPage < 0) return state;
         return {
           ...state,
-          dogs: [...state.dogsFiltered].splice(firstIndex, ITEMS_PER_PAGE), //desde mi 1stIndex quiero que me renderices la cantidad de items que te paso por pagina
+          dogs: [...state.dogsFiltered].splice(firstIndex, ITEMS_PER_PAGE),
           currentPage: action.payload === "next" ? nextPage : prevPage,
         };
       }
@@ -86,7 +86,7 @@ function rootReducer(state = initialState, action) {
 
       return {
         ...state,
-        dogs: [...state.dogsBackup].splice(firstIndex, ITEMS_PER_PAGE), //desde mi 1stIndex quiero que me renderices la cantidad de items que te paso por pagina
+        dogs: [...state.dogsBackup].splice(firstIndex, ITEMS_PER_PAGE), 
         currentPage: action.payload === "next" ? nextPage : prevPage,
       };
 
@@ -267,12 +267,6 @@ function rootReducer(state = initialState, action) {
         currentPage: 0,
       };
 
-      // case GET_DOGS:
-      return {
-        ...state,
-        dogs: [...action.payload].splice(0, ITEMS_PER_PAGE),
-        dogsBackup: action.payload,
-      };
 
     default:
       return state;

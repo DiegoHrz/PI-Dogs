@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 
 const Cards = () => {
   const dogs = useSelector((state) => state.dogs);
-  console.log("dogs:", dogs);
   return (
     <div className="cards-container">
 

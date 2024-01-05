@@ -10,12 +10,12 @@ const Card = ({ info }) => {
         <div className="card">
           <div className="card-header">
             <img src={info.image} alt={info.name} height="100px" />
+            {typeof(info.id) === 'string' && <button className="delete-button">🗑️</button>}
           </div>
           <div className="card-body">
             <h3>{info.name}</h3>
             <div className="card-body-text">
-              {info.Temperaments? `${info.Temperaments.join(', ')}` : ''}
-
+              {info.Temperaments ? `${info.Temperaments.join(", ")}` : ""}
             </div>
           </div>
           <div className="card-footer">

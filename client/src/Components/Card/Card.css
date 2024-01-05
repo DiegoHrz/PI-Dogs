@@ -75,6 +75,24 @@
   color: transparent;
 }
 
+.delete-button {
+  position: absolute !important;
+  top: 20 !important;
+  right:20 !important;
+  font-size: 20px !important;
+  background-color: transparent !important;
+  border: red !important;
+  cursor: pointer !important;
+  opacity: 1; /* Añade esta propiedad */
+  pointer-events: auto; /* Añade esta propiedad */
+  z-index: 2;
+}
+
+.delete-button:not(:hover) {
+  /* Restablecer las propiedades que cambian en :hover */
+  transform: none !important;
+}
+
 .link-tag {
   text-decoration: none;
   color: black;

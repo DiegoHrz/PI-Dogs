@@ -13,12 +13,12 @@ const getTemperaments = async () => {
   
       const temperaments = Array.from(
         new Set(
-          data.reduce((acc, dog) => {
+          data.reduce((arrayVacio, dog) => {
             if (dog.temperament) {
               const tempArray = dog.temperament.split(',').map((temp) => temp.trim());
-              acc.push(...tempArray);
+              arrayVacio.push(...tempArray);
             }
-            return acc;
+            return arrayVacio;
           }, [])
         )
       );

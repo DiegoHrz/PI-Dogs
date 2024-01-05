@@ -57,11 +57,21 @@ dogsHandler.createDogsHandler = async (req, res) => {
       image || "https://images.creativefabrica.com/products/previews/2023/06/02/HMYYv29D8/2QefNo5bZ4K6CUbK7vqZJNS84pT-mobile.jpg",
       temperaments
     );
-    //es un 201 porque a parte de que todo este bien se creo algo
     res.status(201).json(respuesta);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
+
+dogsHandler.deleteDog = async(req,res)=>{
+  try {
+    const {id } = req.body
+    const dogDeleted = await Dog.findByPk(id);
+    dogDeleted.destroy();
+    res.status(200).json(dogDeleted)
+  } catch (error) {
+    res.status(404).json({error: error.message})
+  }
+}
 
 module.exports = dogsHandler;

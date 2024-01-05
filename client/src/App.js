@@ -5,19 +5,13 @@ import Details from "./Views/Details/Details";
 import Home from "./Views/Home/Home";
 import Create from "./Views/Create/Create";
 import Navbar from "./Components/Navbar/Navbar";
-//in version 6 : import {BrowserRouter, Route, Routes}
+
 
 function App() {
   return (
     <div className="App">
-      {/*siempre es obligatorio que todas las rutas esten dentro del BrowserRouter mientras que si sale del switch no ha problema*/}
       <BrowserRouter>
-        {/* <audio className="audio" controls loop autoPlay>
-          <source src="/omfgdogs.ogg" type="audio/ogg" />
-          <source src="/omfgdogs.mp3" type="audio/mpeg" />
-        </audio> */}
         <Switch>
-          {/*o es la 1ra ruta / y renderiza Landing o renderiza el componente navbar en todas las rutas */}
           <Route exact path={"/"} component={Landing}></Route>
           <Route path={""} component={Navbar}></Route>
         </Switch>
@@ -33,11 +27,4 @@ function App() {
 
 export default App;
 
-/* in version 6 of react-router-dom:
-      <BrowserRouter>
-        <Switch>
-          <Route path={'/'} element={<Landing/>} ></Route>
-          <Route></Route>
-        </Switch>
-      </BrowserRouter>
-*/
+
