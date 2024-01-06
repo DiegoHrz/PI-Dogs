@@ -3,11 +3,9 @@ const axios = require("axios");
 require("dotenv").config();
 const { API_KEY, API_URL } = process.env;
 
-
 //get dogs
 
 const getAllBreeds = async (name) => {
-
   // get dogs breed in the db
   const allBreedsDb = async () => {
     let breedsDb = await Dog.findAll({
@@ -69,23 +67,23 @@ const getAllBreeds = async (name) => {
   //query get dogs name (breed)
   if (name) {
     const lowerCaseName = name.toLowerCase();
-  
+
     const breedsFound = allBreeds.filter((dog) => {
       const dogName = dog.name.toLowerCase();
-      const wordsInDogName = dogName.split(' ');  
+      const wordsInDogName = dogName.split(" ");
       if (wordsInDogName.includes(lowerCaseName)) {
         return true;
       }
       return false;
     });
-  
+
     if (!breedsFound.length) {
       throw new Error(`No se encontraron razas con el name: ${name}`);
     }
-  
+
     return breedsFound;
   }
-  
+
   return allBreeds;
 };
 
@@ -131,7 +129,11 @@ const createDogs = async (
   return newDog;
 };
 
+//delete dog
 
+const deletedDog = async (id) => {
+  const dogDeleted = await Dog.findByPk(id);
+  await dogDeleted.destroy();
+};
 
-
-module.exports = { getAllBreeds, getBreedId, createDogs };
+module.exports = { getAllBreeds, getBreedId, createDogs, deletedDog };

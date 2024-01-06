@@ -2,6 +2,7 @@ const {
   getAllBreeds,
   getBreedId,
   createDogs,
+  deletedDog,
 } = require("../controllers/dogsController");
 
 const dogsHandler = {};
@@ -63,12 +64,11 @@ dogsHandler.createDogsHandler = async (req, res) => {
   }
 };
 
-dogsHandler.deleteDog = async(req,res)=>{
+dogsHandler.deleteDogHandler = async(req,res)=>{
   try {
-    const {id } = req.body
-    const dogDeleted = await Dog.findByPk(id);
-    dogDeleted.destroy();
-    res.status(200).json(dogDeleted)
+    const {id } = req.params
+    const response = await deletedDog(id)
+    res.status(200).json(response)
   } catch (error) {
     res.status(404).json({error: error.message})
   }

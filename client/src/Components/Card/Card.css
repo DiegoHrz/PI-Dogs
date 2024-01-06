@@ -17,7 +17,7 @@
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0px 2px 0px 10px rgba(100, 99, 99, 0.2);
-  overflow: hidden;
+
   width: 300px;
 }
 .card-header img {
@@ -75,22 +75,32 @@
   color: transparent;
 }
 
-.delete-button {
-  position: absolute !important;
-  top: 20 !important;
-  right:20 !important;
+.del-button {
+  /* position: absolute;
+  top: 20px !important;
+  right:20px !important; */
   font-size: 20px !important;
-  background-color: transparent !important;
+
   border: red !important;
   cursor: pointer !important;
   opacity: 1; /* Añade esta propiedad */
-  pointer-events: auto; /* Añade esta propiedad */
-  z-index: 2;
+  z-index: 4;
 }
 
-.delete-button:not(:hover) {
-  /* Restablecer las propiedades que cambian en :hover */
-  transform: none !important;
+.card-body-title{
+  display: flex;
+  justify-content: space-between;
+  align-items:baseline;
+  width: 100%;
+}
+
+.card-body-title h3{
+  margin: 10px 0;
+}
+
+div .del-button{
+  opacity: 1; /* Añade esta propiedad */
+  pointer-events: auto; /* Añade esta propiedad */
 }
 
 .link-tag {
