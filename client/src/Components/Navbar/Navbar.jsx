@@ -12,7 +12,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-searchbar-container">
-        <Link to={"/"}>
+        <Link to={"/"} className='text-decoration'>
           <div className="navbar-Link-container">
             <div>
               <img src={salida} />

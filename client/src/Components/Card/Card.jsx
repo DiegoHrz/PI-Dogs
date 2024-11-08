@@ -10,45 +10,43 @@ const Card = ({ info }) => {
       const response = await axios.delete(
         `http://localhost:3001/dogs/${info.id}`
       );
-      console.log(response.data); // Datos de la respuesta si es necesario
-      // Aquí puedes realizar acciones adicionales si la eliminación fue exitosa
+      console.log(response.data);
     } catch (error) {
-      console.error(error.message); // Manejo de errores
-      // Aquí puedes mostrar mensajes de error o realizar acciones adicionales en caso de error
+      console.error(error.message);
     }
   };
 
   return (
     <div className="card-container">
-      {console.log(info)}
       <div className="card">
         <Link to={`/details/${info.id}`} className="link-tag">
           <div className="card-header">
             <img src={info.image} alt={info.name} height="100px" />
           </div>
-        </Link>
-        <div className="card-body">
-          <div className="card-body-title">
-            <Link to={`/details/${info.id}`} className="link-tag">
+          <div className="card-body">
+            <div className="card-body-title">
               <div>
                 <h3>{info.name}</h3>
               </div>
-            </Link>
-            <div>
-              {typeof info.id === "string" && (
-                <button className="del-button" onClick={handleDeleteDog}>
-                  🗑️
-                </button>
-              )}
+              <div>
+                {typeof info.id === "string" && (
+                  //que este boton no se efectue el Link para no irme a la pagina details
+                  <button
+                    className="del-button"
+                    onClick={(e) => {
+                      e.stopPropagation(); // Evitar que el clic se propague al contenedor del enlace
+                      handleDeleteDog();
+                    }}
+                  >
+                    🗑️
+                  </button>
+                )}
+              </div>
             </div>
-          </div>
-          <Link to={`/details/${info.id}`} className="link-tag">
             <div className="card-body-text">
               {info.Temperaments ? `${info.Temperaments.join(", ")}` : ""}
             </div>
-          </Link>
-        </div>
-        <Link to={`/details/${info.id}`} className="link-tag">
+          </div>
           <div className="card-footer">
             Weight: {info.min_weight} - {info.max_weight}
           </div>

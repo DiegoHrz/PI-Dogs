@@ -1,13 +1,12 @@
 .landing-container {
-  background-color: black;
-  height: 110%;
-  margin-top: -100px;
+  background-color: #e10c12;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: linear-gradient(90deg, white, white,white, white,#000000, #000000,#000000, #000000, #000000, white, white,white,white);
+  /* background: linear-gradient(90deg, white, white,white, white,#000000, #000000,#000000, #000000, #000000, white, white,white,white); */
   /* background: linear-gradient(90deg, #000000, #000000,#000000, #fff8f1, #000000, #000000,#000000); */
-  background-size: 300% 300%;
+  /* background-size: 300% 300%; */
   animation: color 12s ease-in-out infinite;
 }
 
@@ -24,21 +23,22 @@
 }
 
 .landing-title {
-  color: red;
-  background-color: black;
-  text-shadow: 0 0 120px rgba(225, 34, 34, 0.7);
-  font-size: 300px;
-  letter-spacing: 10px;
-  margin: 0;
-  background: linear-gradient(
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #ed0119;
+  letter-spacing: 0px;
+
+  font-size: 120px;
+
+  margin: 0px auto;
+  /* background: linear-gradient(
     to right,
     rgb(101, 12, 12),
     rgb(110, 12, 4),
     rgb(50, 13, 9)
-  ); /* Ajusta los colores según sea necesario */
-  -webkit-background-clip: text; /* Esto permite que el degradado se aplique solo al texto */
+  ); Ajusta los colores según sea necesario */
+
   background-clip: none;
-  color: transparent; /* Hace que el texto sea transparente, revelando el degradado de fondo */
+
   border-bottom-left-radius: 200px; /* Ajusta el radio según sea necesario */
   border-bottom-right-radius: 200px;
 }
@@ -48,13 +48,27 @@
 }
 
 .landing-title-container {
-  margin: 4rem 0 0 0;
+  margin: auto;
+  background-color: black;
+  border: 3px solid #706e6c;
+  padding: 100px 160px;
+  box-shadow: 70px 60px 30px rgb(0, 0, 0, 0.6);
+  position: relative;
 }
 
-.landing-button-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
+.base{
+  background-color: black;
+  position: absolute;
+  height: 40px;
+  width: 500px;
+  border-radius:100%;
+  top: 203px;
+  left: 50%;                /* Positions element halfway across the page */
+  transform: translateX(-50%); 
+}
+
+.landing-button-container:hover {
+  cursor: pointer;
 }
 
 @keyframes pulse {
@@ -70,12 +84,8 @@
 }
 
 .landing-button {
-
-
-  height: 350px;
-  width: 350px;
-  font-size: 200px;
-
+  font-size: 60px;
+  filter: brightness(0) invert(1);
   color: white;
   display: flex;
   align-items: center;
